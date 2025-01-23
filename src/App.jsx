@@ -1,35 +1,74 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
+import LoginScreen from "./components/LoginScreen";
+import SignupScreen from "./components/SignupScreen";
+import HomeScreen from "./components/HomeScreen";
+// import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
+  // TODO: Temp user, replace with fetch results
+  const [currentUser, setCurrentUser] = useState(false);
+  const [viewLogin, setViewLogin] = useState(true);
+  const [viewSignup, setViewSignup] = useState(false);
+  const [viewHome, setViewHome] = useState(false);
+
+  const navToLogin = () => {
+    setViewLogin(true);
+    setViewSignup(false);
+    setViewHome(false);
+  };
+
+  const navToSignup = () => {
+    setViewLogin(false);
+    setViewSignup(true);
+    setViewHome(false);
+  };
+
+  const navToHome = () => {
+    setViewLogin(false);
+    setViewSignup(false);
+    setViewHome(true);
+  };
+
+  const login = () => {
+    setCurrentUser(true);
+    navToHome()
+  };
+
+  const logout = () => {
+    setCurrentUser(false);
+    navToLogin();
+  };
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
+      <header>
+        <div>Home</div>
+        {currentUser ? (
+          <nav>
+            <div>Username</div>
+            <div onClick={logout}>Logout</div>
+          </nav>
+        ) : (
+          <nav>
+            <div onClick={navToLogin}>Login</div>
+            <div onClick={navToSignup}>Signup</div>
+          </nav>
+        )}
+      </header>
+      <main>
+        {viewLogin && <LoginScreen login={login} />}
+        {viewSignup && <SignupScreen />}
+        {viewHome && <HomeScreen />}
+      </main>
+
+      {/* <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
         </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      </div> */}
     </>
-  )
+  );
 }
 
-export default App
+export default App;
