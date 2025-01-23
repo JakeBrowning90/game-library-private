@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-// import apiSource
+import { apiurl } from "../apiSource";
 
 function SignupScreen(
   {
@@ -7,18 +7,44 @@ function SignupScreen(
   }
 ) {
   // State declarations
+  const [signupErrors, setSignupErrors] = useState([]);
+  const [username, setUsername] = useState("");
+
   // Functions
+  function handleUsername(e) {
+    setUsername(e.target.value);
+  }
+
+  async function submitSignup(e) {
+    e.preventDefault();
+    console.log(username);
+    // const response = await fetch(apiurl + "user", {
+    //     method: "POST",
+    //     mode: "cors",
+    //     headers: {
+    //         "Content-Type": "application/json",
+    //     },
+    //     body: JSON.stringify({
+    //         username: username
+    //     })
+    // })
+  }
   // Render
   return (
     <>
       <div>Signup Screen</div>
-      <form action="">
+      <form action="username" onSubmit={submitSignup}>
         <label htmlFor="">Username:</label>
-        <input type="text" />
-        <label htmlFor="">Password:</label>
-        <input type="text" />
-        <label htmlFor="">Confirm Password:</label>
-        <input type="text" />
+        <input
+          type="text"
+          id="username"
+          value={username}
+          onChange={handleUsername}
+        />
+        <label htmlFor="password">Password:</label>
+        <input type="text" id="password" />
+        <label htmlFor="confirmPassword">Confirm Password:</label>
+        <input type="text" id="confirmPassword" />
         <button>Submit</button>
       </form>
     </>
