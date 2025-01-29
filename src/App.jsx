@@ -2,6 +2,8 @@ import { useState } from "react";
 import LoginScreen from "./components/LoginScreen";
 import SignupScreen from "./components/SignupScreen";
 import HomeScreen from "./components/HomeScreen";
+import { BrowserRouter, Routes, Route } from "react-router";
+
 // import "./App.css";
 
 function App() {
@@ -18,22 +20,11 @@ function App() {
     setViewHome(false);
   };
 
-  const navToSignup = () => {
-    setViewLogin(false);
-    setViewSignup(true);
-    setViewHome(false);
-  };
-
-  const navToHome = () => {
-    setViewLogin(false);
-    setViewSignup(false);
-    setViewHome(true);
-  };
-
-  const login = () => {
-    setCurrentUser(true);
-    navToHome()
-  };
+  // const login = () => {
+  //   setCurrentUser(true);
+  //   // navToHome();
+  //   // window.location.href = "/"
+  // };
 
   const logout = () => {
     setCurrentUser(false);
@@ -43,7 +34,7 @@ function App() {
   return (
     <>
       <header>
-        <div>Home</div>
+        <a href="/">Home</a>
         {currentUser ? (
           <nav>
             <div>Username</div>
@@ -51,15 +42,19 @@ function App() {
           </nav>
         ) : (
           <nav>
-            <div onClick={navToLogin}>Login</div>
-            <div onClick={navToSignup}>Signup</div>
+            <a href="/login">Login</a>
+            <a href="/signup">Signup</a>
           </nav>
         )}
       </header>
       <main>
-        {viewLogin && <LoginScreen login={login} />}
-        {viewSignup && <SignupScreen />}
-        {viewHome && <HomeScreen />}
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<HomeScreen />}></Route>
+            <Route path="login" element={<LoginScreen />}></Route>
+            <Route path="signup" element={<SignupScreen />}></Route>
+          </Routes>
+        </BrowserRouter>
       </main>
 
       {/* <div className="card">
