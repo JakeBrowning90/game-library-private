@@ -38,15 +38,20 @@ function GameList(
       <p>Game List</p>
       <p>To-do: Search Bar</p>
       <p>To-do: New Game form</p>
-      {gameList.length == 0 ? <p>No games found</p> : <ul>
-        {gameList.map((game)=>{
+      {gameList.length == 0 ? (
+        <p>No games found</p>
+      ) : (
+        <ul>
+          {gameList.map((game) => {
             return (
-                <li>
-                    <p>{game.title}</p>
-                </li>
-            )
-        })}
-        </ul>}
+              <li>
+                <p>{game.title}</p>
+                {/* Link to details, edit form, delete option */}
+              </li>
+            );
+          })}
+        </ul>
+      )}
     </div>
   );
 }
