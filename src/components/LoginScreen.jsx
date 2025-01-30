@@ -23,7 +23,7 @@ function LoginScreen(
 
   async function submitLogin(e) {
     e.preventDefault();
-    console.log(username, password);
+    // console.log(username, password);
     const response = await fetch(apiurl + "user/login", {
       method: "POST",
       mode: "cors",
