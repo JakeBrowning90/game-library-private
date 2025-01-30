@@ -2,7 +2,9 @@ import { useState } from "react";
 import LoginScreen from "./components/LoginScreen";
 import SignupScreen from "./components/SignupScreen";
 import HomeScreen from "./components/HomeScreen";
-import { BrowserRouter, Routes, Route } from "react-router";
+import ErrorScreen from "./components/ErrorScreen";
+
+import { BrowserRouter, Routes, Route, Link } from "react-router";
 
 // import "./App.css";
 
@@ -27,34 +29,36 @@ function App() {
   // };
 
   const logout = () => {
+    localStorage.clear();
     setCurrentUser(false);
-    navToLogin();
+    window.location.href = "/login";
+    // navToLogin();
   };
 
   return (
     <>
       <header>
-        <a href="/">Home</a>
-        {currentUser ? (
+        <Link to="/">Home</Link>
+
+        {localStorage.username ? (
           <nav>
-            <div>Username</div>
-            <div onClick={logout}>Logout</div>
+            <div>{localStorage.username}</div>
+            <a onClick={logout}>Logout</a>
           </nav>
         ) : (
           <nav>
-            <a href="/login">Login</a>
-            <a href="/signup">Signup</a>
+            <Link to="/login">Login</Link>
+            <Link to="/signup">Signup</Link>
           </nav>
         )}
       </header>
       <main>
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<HomeScreen />}></Route>
-            <Route path="login" element={<LoginScreen />}></Route>
-            <Route path="signup" element={<SignupScreen />}></Route>
-          </Routes>
-        </BrowserRouter>
+        <Routes>
+          <Route path="/" element={<HomeScreen />}></Route>
+          <Route path="login" element={<LoginScreen />}></Route>
+          <Route path="signup" element={<SignupScreen />}></Route>
+          <Route path="*" element={<ErrorScreen />}></Route>
+        </Routes>
       </main>
 
       {/* <div className="card">

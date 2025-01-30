@@ -23,7 +23,7 @@ function LoginScreen(
 
   async function submitLogin(e) {
     e.preventDefault();
-    console.log(username,password)
+    console.log(username, password);
     const response = await fetch(apiurl + "user/login", {
       method: "POST",
       mode: "cors",
@@ -39,9 +39,17 @@ function LoginScreen(
       setInvalidLogin(true);
     } else {
       const loginResponse = await response.json();
-      console.log(loginResponse);
+      // console.log(loginResponse);
       // Set user and token to local storage
+      localStorage.setItem("username", loginResponse.username);
+      localStorage.setItem("id", loginResponse.id);
+      localStorage.setItem("isAdmin", loginResponse.isAdmin);
+      localStorage.setItem("isDemo", loginResponse.isDemo);
+      localStorage.setItem("token", `Bearer ${loginResponse.token}`);
+      // console.log(localStorage);
+      setInvalidLogin(false);
       // Redirect to home
+      window.location.href = "/";
     }
     // setCurrentUser(true);
     // navToHome();
