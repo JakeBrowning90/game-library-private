@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { BrowserRouter, Routes, Route, Link, useNavigate } from "react-router";
 // import apiSource
 
 function HomeScreen(
@@ -12,9 +13,9 @@ function HomeScreen(
   return (
     <>
       <div>Home Screen</div>
-      <div>Manage Games</div>
-      <div>Manage Tags</div>
-      <div>Manage Users</div>
+      <Link to="/users">Manage Users</Link>
+      <Link to="/tags">Manage Tags</Link>
+      <Link to="/games">Manage Games</Link>
     </>
   );
 }

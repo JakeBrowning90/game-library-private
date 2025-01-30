@@ -1,37 +1,34 @@
 import { useState } from "react";
 import LoginScreen from "./components/LoginScreen";
 import SignupScreen from "./components/SignupScreen";
+import ProtectedRoute from "./components/ProtectedRoute";
 import HomeScreen from "./components/HomeScreen";
+import UserList from "./components/UserList";
+import TagList from "./components/TagList";
+import GameList from "./components/GameList";
 import ErrorScreen from "./components/ErrorScreen";
 
-import { BrowserRouter, Routes, Route, Link } from "react-router";
+import { BrowserRouter, Routes, Route, Link, useNavigate } from "react-router";
 
 // import "./App.css";
 
 function App() {
+  const navigate = useNavigate();
+
   const [count, setCount] = useState(0);
   // TODO: Temp user, replace with fetch results
   const [currentUser, setCurrentUser] = useState(false);
-  const [viewLogin, setViewLogin] = useState(true);
-  const [viewSignup, setViewSignup] = useState(false);
-  const [viewHome, setViewHome] = useState(false);
 
-  const navToLogin = () => {
-    setViewLogin(true);
-    setViewSignup(false);
-    setViewHome(false);
+  const login = () => {
+    setCurrentUser(true);
+    // navToHome();
+    navigate("/");
   };
-
-  // const login = () => {
-  //   setCurrentUser(true);
-  //   // navToHome();
-  //   // window.location.href = "/"
-  // };
 
   const logout = () => {
     localStorage.clear();
     setCurrentUser(false);
-    window.location.href = "/login";
+    navigate("/login");
     // navToLogin();
   };
 
@@ -54,10 +51,41 @@ function App() {
       </header>
       <main>
         <Routes>
-          <Route path="/" element={<HomeScreen />}></Route>
-          <Route path="login" element={<LoginScreen />}></Route>
-          <Route path="signup" element={<SignupScreen />}></Route>
-          <Route path="*" element={<ErrorScreen />}></Route>
+          <Route
+            path="/"
+            element={
+              <ProtectedRoute>
+                <HomeScreen />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="users"
+            element={
+              <ProtectedRoute>
+                <UserList />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="tags"
+            element={
+              <ProtectedRoute>
+                <TagList />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="games"
+            element={
+              <ProtectedRoute>
+                <GameList />
+              </ProtectedRoute>
+            }
+          />
+          <Route path="login" element={<LoginScreen />} />
+          <Route path="signup" element={<SignupScreen />} />
+          <Route path="*" element={<ErrorScreen />} />
         </Routes>
       </main>
 
