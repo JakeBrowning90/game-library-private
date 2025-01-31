@@ -25,7 +25,7 @@ function SignupScreen(
 
   async function submitSignup(e) {
     e.preventDefault();
-    console.log(username, password, confirmPassword);
+    // console.log(username, password, confirmPassword);
     const response = await fetch(apiurl + "user", {
       method: "POST",
       mode: "cors",

@@ -7,6 +7,7 @@ function TagList(
   }
 ) {
   // State declarations
+  const [newTag, setNewTag] = useState("");
   const [tagList, setTagList] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -29,6 +30,27 @@ function TagList(
       .catch((error) => setError(error))
       .finally(() => setLoading(false));
   }, []);
+
+  const handleNewTag = (e) => {
+    setNewTag(e.target.value);
+  };
+
+  async function submitNewTag(e) {
+    e.preventDefault();
+    const response = await fetch(apiurl + "tag", {
+      method: "POST",
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        tagName: newTag,
+      }),
+    });
+    const newTagResponse = await response.json();
+    console.log(newTagResponse);
+  }
+
   // Render
   if (loading) return <p>Loading tag list...</p>;
   if (error) return <p>Network error, please try again later.</p>;
@@ -37,7 +59,17 @@ function TagList(
     <div>
       <p>Tag List</p>
       <p>To-do: Search Bar</p>
-      <p>To-do: New Tag form</p>
+      <form onSubmit={submitNewTag}>
+        <label htmlFor="newTag">New Tag</label>
+        <input
+          type="text"
+          name="newTag"
+          id="newTag"
+          value={newTag}
+          onChange={handleNewTag}
+        />
+        <button>Submit</button>
+      </form>
       {tagList.length == 0 ? (
         <p>No tags found</p>
       ) : (

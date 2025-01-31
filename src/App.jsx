@@ -19,12 +19,6 @@ function App() {
   // TODO: Temp user, replace with fetch results
   const [currentUser, setCurrentUser] = useState(false);
 
-  const login = () => {
-    setCurrentUser(true);
-    // navToHome();
-    navigate("/");
-  };
-
   const logout = () => {
     localStorage.clear();
     setCurrentUser(false);
