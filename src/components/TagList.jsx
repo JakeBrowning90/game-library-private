@@ -1,5 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter, Routes, Route, Link, useNavigate, Outlet } from "react-router";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  Link,
+  useNavigate,
+  Outlet,
+} from "react-router";
 import { apiurl } from "../apiSource";
 
 function TagList(
@@ -80,9 +87,8 @@ function TagList(
             return (
               <li key={tag.id}>
                 <p>{tag.tagName}</p>
+                {/* Link to edit or delete tag */}
                 <Link to={`/tags/${tag.id}`}>Edit</Link>
-                {/* <Link to={tag.id}>Edit</Link> */}
-                {/* Link to edit form, delete option */}
               </li>
             );
           })}
