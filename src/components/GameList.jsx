@@ -44,7 +44,7 @@ function GameList(
         <ul>
           {gameList.map((game) => {
             return (
-              <li>
+              <li key={game.id}>
                 <p>{game.title}</p>
                 {/* Link to details, edit form, delete option */}
               </li>

@@ -43,7 +43,7 @@ function UserList(
         <ul>
           {userList.map((user) => {
             return (
-              <li>
+              <li key={user.id}>
                 <p>{user.username}</p>
                 {/* Link to details, edit form, delete option */}
               </li>

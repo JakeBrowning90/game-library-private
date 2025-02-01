@@ -76,7 +76,7 @@ function TagList(
         <ul>
           {tagList.map((tag) => {
             return (
-              <li>
+              <li key={tag.id}>
                 <p>{tag.tagName}</p>
                 {/* Link to edit form, delete option */}
               </li>
