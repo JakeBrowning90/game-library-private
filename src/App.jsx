@@ -5,6 +5,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import HomeScreen from "./components/HomeScreen";
 import UserList from "./components/UserList";
 import TagList from "./components/TagList";
+import TagEditScreen from "./components/TagEditScreen";
 import GameList from "./components/GameList";
 import ErrorScreen from "./components/ErrorScreen";
 
@@ -70,13 +71,23 @@ function App() {
             }
           />
           <Route
+            path="tags/:tagId"
+            element={
+              <ProtectedRoute>
+                <TagEditScreen />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
             path="games"
             element={
               <ProtectedRoute>
                 <GameList />
               </ProtectedRoute>
             }
-          />
+          ></Route>
+
           <Route path="login" element={<LoginScreen />} />
           <Route path="signup" element={<SignupScreen />} />
           <Route path="*" element={<ErrorScreen />} />

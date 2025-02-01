@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { BrowserRouter, Routes, Route, Link, useNavigate, Outlet } from "react-router";
 import { apiurl } from "../apiSource";
 
 function TagList(
@@ -49,6 +50,7 @@ function TagList(
     });
     const newTagResponse = await response.json();
     console.log(newTagResponse);
+    window.location.reload();
   }
 
   // Render
@@ -60,7 +62,7 @@ function TagList(
       <p>Tag List</p>
       <p>To-do: Search Bar</p>
       <form onSubmit={submitNewTag}>
-        <label htmlFor="newTag">New Tag</label>
+        <label htmlFor="newTag">New Tag:</label>
         <input
           type="text"
           name="newTag"
@@ -78,12 +80,15 @@ function TagList(
             return (
               <li key={tag.id}>
                 <p>{tag.tagName}</p>
+                <Link to={`/tags/${tag.id}`}>Edit</Link>
+                {/* <Link to={tag.id}>Edit</Link> */}
                 {/* Link to edit form, delete option */}
               </li>
             );
           })}
         </ul>
       )}
+      <Outlet />
     </div>
   );
 }
