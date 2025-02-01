@@ -60,7 +60,8 @@ button:focus-visible {
   flex-direction: column;
 } */
 
-header, nav {
+header,
+nav {
   display: flex;
   gap: 10px;
 }
@@ -72,4 +73,11 @@ header {
 main {
   background-color: rgb(255, 222, 204);
   flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.mainHome {
+  display: flex;
+  flex-direction: column;
 }

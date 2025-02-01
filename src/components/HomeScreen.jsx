@@ -12,10 +12,12 @@ function HomeScreen(
   // Render
   return (
     <>
-      <div>Home Screen</div>
-      <Link to="/users">Manage Users</Link>
-      <Link to="/tags">Manage Tags</Link>
-      <Link to="/games">Manage Games</Link>
+      <div className="mainHome">
+        <div>Home Screen</div>
+        <Link to="/users">Manage Users</Link>
+        <Link to="/tags">Manage Tags</Link>
+        <Link to="/games">Manage Games</Link>
+      </div>
     </>
   );
 }
