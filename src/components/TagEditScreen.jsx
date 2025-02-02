@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router";
+import {Link, useParams, useNavigate } from "react-router";
 import { apiurl } from "../apiSource";
 
 function TagEditScreen(
@@ -13,6 +13,7 @@ function TagEditScreen(
   const [loading, setLoading] = useState(true);
 
   // Functions
+  const navigate = useNavigate();
   const { tagId } = useParams();
 
   useEffect(() => {
@@ -51,18 +52,36 @@ function TagEditScreen(
     });
     const targetTagResponse = await response.json();
     console.log(targetTagResponse);
+    // To-do:
     // If update works, return to list
+    // navigate("/tags");
+
     // If update fails, display error message
-    // window.location.reload();
   }
-  async function deleteTag() {}
+  async function deleteTag(e) {
+    e.preventDefault();
+    const response = await fetch(apiurl + "tag/" + tagId, {
+      method: "DELETE",
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        tagName: targetTag,
+      }),
+    });
+    navigate("/tags");
+  }
 
   // Render
   if (loading) return <p>Loading tag list...</p>;
   if (error) return <p>Network error, please try again later.</p>;
   return (
     <div>
+      <Link to={"/tags"}>Back</Link>
+
       <p>Manage Tag</p>
+      {/* To-do: Render errors */}
       <form onSubmit={editTag}>
         <label htmlFor="targetTag">Tag Name:</label>
         <input
