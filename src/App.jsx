@@ -24,7 +24,6 @@ function App() {
     localStorage.clear();
     setCurrentUser(false);
     navigate("/login");
-    // navToLogin();
   };
 
   return (

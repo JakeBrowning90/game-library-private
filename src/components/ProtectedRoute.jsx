@@ -1,21 +1,32 @@
-import React, { useState } from "react";
-import { Navigate } from "react-router";
-// import apiSource
+import React, { useState, useEffect } from "react";
+import { Navigate, useNavigate } from "react-router";
+import { apiurl } from "../apiSource";
 
-function ProtectedRoute(
-  {
-    // Props
-    children
-  }
-) {
+function ProtectedRoute({
+  // Props
+  children,
+}) {
   // State declarations
   // Functions
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    fetch(apiurl + "user/check/", {
+      method: "POST",
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/json",
+        authorization: localStorage.getItem("token"),
+      },
+    }).then((response) => {
+      if (response.status != 200) {
+        localStorage.clear();
+        navigate("/login");
+      }
+    });
+  }, [children]);
+
   // Render
-
-  if (!localStorage.token) {
-    return <Navigate to="/login" replace />;
-  }
-
   return children;
 }
 
