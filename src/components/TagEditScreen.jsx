@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {Link, useParams, useNavigate } from "react-router";
+import { Link, useParams, useNavigate } from "react-router";
 import { apiurl } from "../apiSource";
 
 function TagEditScreen(
@@ -9,6 +9,7 @@ function TagEditScreen(
 ) {
   // State declarations
   const [targetTag, setTargetTag] = useState("");
+  const [tagSubmitError, setTagSubmitError] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -51,13 +52,13 @@ function TagEditScreen(
       }),
     });
     const targetTagResponse = await response.json();
-    console.log(targetTagResponse);
-    // To-do:
-    // If update works, return to list
-    // navigate("/tags");
-
-    // If update fails, display error message
+    if (Array.isArray(targetTagResponse.errors)) {
+      setTagSubmitError(targetTagResponse.errors);
+    } else {
+      navigate("/tags");
+    }
   }
+
   async function deleteTag(e) {
     e.preventDefault();
     const response = await fetch(apiurl + "tag/" + tagId, {
@@ -83,6 +84,11 @@ function TagEditScreen(
       <p>Manage Tag</p>
       {/* To-do: Render errors */}
       <form onSubmit={editTag}>
+        <ul>
+          {tagSubmitError.map((err) => {
+            return <li key={tagSubmitError.indexOf(err)}>{err.msg}</li>;
+          })}
+        </ul>
         <label htmlFor="targetTag">Tag Name:</label>
         <input
           type="text"
