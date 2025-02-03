@@ -17,6 +17,7 @@ function TagList(
   // State declarations
   const [newTag, setNewTag] = useState("");
   const [tagList, setTagList] = useState([]);
+  const [tagSubmitError, setTagSubmitError] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -57,8 +58,11 @@ function TagList(
       }),
     });
     const newTagResponse = await response.json();
-    console.log(newTagResponse);
-    window.location.reload();
+    if (Array.isArray(newTagResponse.errors)) {
+      setTagSubmitError(newTagResponse.errors);
+    } else {
+      window.location.reload();
+    }
   }
 
   // Render
@@ -70,6 +74,12 @@ function TagList(
       <p>Tag List</p>
       <p>To-do: Search Bar</p>
       <form onSubmit={submitNewTag}>
+        {/* Show errors */}
+        <ul>
+          {tagSubmitError.map((err) => {
+            return <li key={tagSubmitError.indexOf(err)}>{err.msg}</li>;
+          })}
+        </ul>
         <label htmlFor="newTag">New Tag:</label>
         <input
           type="text"
