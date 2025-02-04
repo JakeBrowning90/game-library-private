@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { BrowserRouter, Routes, Route, Link, useNavigate } from "react-router";
+
 import { apiurl } from "../apiSource";
 
 function GameList(
@@ -36,8 +38,9 @@ function GameList(
   return (
     <div>
       <p>Game List</p>
-      <p>To-do: Search Bar</p>
-      <p>To-do: New Game form</p>
+      <Link to={"new"}>Add New Game</Link>
+      <p>To-do: Search Form</p>
+
       {gameList.length == 0 ? (
         <p>No games found</p>
       ) : (

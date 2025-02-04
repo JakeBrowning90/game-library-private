@@ -14,9 +14,9 @@ function HomeScreen(
     <>
       <div className="mainHome">
         <div>Home Screen</div>
-        <Link to="/users">Manage Users</Link>
-        <Link to="/tags">Manage Tags</Link>
         <Link to="/games">Manage Games</Link>
+        <Link to="/tags">Manage Tags</Link>
+        <Link to="/users">Manage Users</Link>
       </div>
     </>
   );
