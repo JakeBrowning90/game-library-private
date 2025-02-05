@@ -8,6 +8,13 @@ function GameForm(
 ) {
   // State declarations
   const [title, setTitle] = useState("");
+  const [desc, setDesc] = useState("");
+  const [timeMin, setTimeMin] = useState(0);
+  const [timeMax, setTimeMax] = useState(0);
+  const [playerCtMin, setPlayerCtMin] = useState(0);
+  const [playerCtMax, setPlayerCtMax] = useState(0);
+  const [gameWeight, setGameWeight] = useState("");
+  const [inCirc, setInCirc] = useState(false);
 
   // Functions
   const handleTitle = (e) => {
