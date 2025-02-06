@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-// import apiSource
+import { Link, useParams, useNavigate } from "react-router";
+import { apiurl } from "../apiSource";
 
 function GameForm(
   {
@@ -16,8 +17,11 @@ function GameForm(
   const [playerCtMax, setPlayerCtMax] = useState(0);
   const [gameWeight, setGameWeight] = useState("");
   const [inCirc, setInCirc] = useState(false);
+  const [gameSubmitError, setGameSubmitError] = useState([]);
 
   // Functions
+  const navigate = useNavigate();
+
   const handleTitle = (e) => {
     setTitle(e.target.value);
   };
@@ -48,22 +52,45 @@ function GameForm(
 
   async function submitNewGame(e) {
     e.preventDefault();
-    console.log(title);
-    console.log(desc);
-    console.log(ageRec);
-    console.log(playerCtMin);
-    console.log(playerCtMax);
-    console.log(timeMin);
-    console.log(timeMax);
-    console.log(gameWeight);
-    console.log(inCirc);
+    const response = await fetch(apiurl + "game", {
+      method: "POST",
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/json",
+        authorization: localStorage.getItem("token"),
+      },
+      body: JSON.stringify({
+        title: title,
+        desc: desc,
+        timeMin: timeMin,
+        timeMax: timeMax,
+        playerCtMin: playerCtMin,
+        playerCtMax: playerCtMax,
+        ageRec: ageRec,
+        gameWeight: gameWeight,
+        inCirc: inCirc,
+      }),
+    });
+    const newGameResponse = await response.json();
+    if (Array.isArray(newGameResponse.errors)) {
+      setGameSubmitError(newGameResponse.errors);
+    } else {
+      navigate("/games");
+    }
   }
 
   // Render
   return (
     <div>
-      Game Form
+      <Link to={"/games"}>Back</Link>
+      <p>Add New Game</p>
+      
       <form onSubmit={submitNewGame}>
+        <ul>
+          {gameSubmitError.map((err) => {
+            return <li key={gameSubmitError.indexOf(err)}>{err.msg}</li>;
+          })}
+        </ul>
         <label htmlFor="title">Title:</label>
         <input
           type="text"
