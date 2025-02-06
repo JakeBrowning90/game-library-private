@@ -8,6 +8,7 @@ import TagList from "./components/TagList";
 import TagEditScreen from "./components/TagEditScreen";
 import GameList from "./components/GameList";
 import GameForm from "./components/GameForm";
+import GameDetail from "./components/GameDetail";
 import ErrorScreen from "./components/ErrorScreen";
 
 import { BrowserRouter, Routes, Route, Link, useNavigate } from "react-router";
@@ -93,6 +94,15 @@ function App() {
             element={
               <ProtectedRoute>
                 <GameForm />
+              </ProtectedRoute>
+            }
+          ></Route>
+
+          <Route
+            path="games/:gameId"
+            element={
+              <ProtectedRoute>
+                <GameDetail />
               </ProtectedRoute>
             }
           ></Route>

@@ -49,9 +49,7 @@ function GameList(
             return (
               <li key={game.id}>
                 <p>{game.title}</p>
-                <p>{game.desc}</p>
                 <p>{game.ageRec}+ </p>
-
                 <p>
                   {game.playerCtMin} - {game.playerCtMax} players
                 </p>
@@ -60,8 +58,7 @@ function GameList(
                 </p>
                 <p>{game.gameWeight}</p>
                 {game.inCirc ? <p>Available</p> : <p>Unavailable</p>}
-
-                {/* Link to details, edit form, delete option */}
+                <Link to={`/games/${game.id}`}>Detail</Link>
               </li>
             );
           })}

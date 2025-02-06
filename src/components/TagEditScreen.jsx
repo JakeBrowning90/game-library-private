@@ -75,7 +75,7 @@ function TagEditScreen(
   }
 
   // Render
-  if (loading) return <p>Loading tag list...</p>;
+  if (loading) return <p>Loading tag info...</p>;
   if (error) return <p>Network error, please try again later.</p>;
   return (
     <div>
