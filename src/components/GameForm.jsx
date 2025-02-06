@@ -9,6 +9,7 @@ function GameForm(
   // State declarations
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
+  const [ageRec, setAgeRec] = useState(0);
   const [timeMin, setTimeMin] = useState(0);
   const [timeMax, setTimeMax] = useState(0);
   const [playerCtMin, setPlayerCtMin] = useState(0);
@@ -20,10 +21,42 @@ function GameForm(
   const handleTitle = (e) => {
     setTitle(e.target.value);
   };
+  const handleDesc = (e) => {
+    setDesc(e.target.value);
+  };
+  const handleAgeRec = (e) => {
+    setAgeRec(e.target.value);
+  };
+  const handlePlayerCtMin = (e) => {
+    setPlayerCtMin(e.target.value);
+  };
+  const handlePlayerCtMax = (e) => {
+    setPlayerCtMax(e.target.value);
+  };
+  const handleTimeMin = (e) => {
+    setTimeMin(e.target.value);
+  };
+  const handleTimeMax = (e) => {
+    setTimeMax(e.target.value);
+  };
+  const handleGameWeight = (e) => {
+    setGameWeight(e.target.value);
+  };
+  const handleInCirc = () => {
+    setInCirc(!inCirc);
+  };
 
   async function submitNewGame(e) {
     e.preventDefault();
     console.log(title);
+    console.log(desc);
+    console.log(ageRec);
+    console.log(playerCtMin);
+    console.log(playerCtMax);
+    console.log(timeMin);
+    console.log(timeMax);
+    console.log(gameWeight);
+    console.log(inCirc);
   }
 
   // Render
@@ -39,53 +72,53 @@ function GameForm(
           value={title}
           onChange={handleTitle}
         />
-        <label htmlFor="">Description:</label>
+        <label htmlFor="desc">Description:</label>
         <input
           type="textarea"
-          name=""
-          id=""
-          //   value={}
-          //   onChange={}
+          name="desc"
+          id="desc"
+          value={desc}
+          onChange={handleDesc}
         />
-        <label htmlFor="">Min. Age:</label>
+        <label htmlFor="ageRec">Min. Age:</label>
+        <input
+          type="number"
+          name="ageRec"
+          id="ageRec"
+          value={ageRec}
+          onChange={handleAgeRec}
+        />
+        <label htmlFor="playerCtMin">Player Min:</label>
         <input
           type="number"
           name=""
-          id=""
-          //   value={}
-          //   onChange={}
+          id="playerCtMin"
+          value={playerCtMin}
+          onChange={handlePlayerCtMin}
         />
-        <label htmlFor="">Player Min:</label>
+        <label htmlFor="playerCtMax">Player Max:</label>
         <input
           type="number"
-          name=""
-          id=""
-          //   value={}
-          //   onChange={}
-        />
-        <label htmlFor="">Player Max:</label>
-        <input
-          type="number"
-          name=""
-          id=""
-          //   value={}
-          //   onChange={}
+          name="playerCtMax"
+          id="playerCtMax"
+          value={playerCtMax}
+          onChange={handlePlayerCtMax}
         />
         <label htmlFor="">Time Min:</label>
         <input
           type="number"
           name=""
           id=""
-          //   value={}
-          //   onChange={}
+          value={timeMin}
+          onChange={handleTimeMin}
         />
         <label htmlFor="">Time Max:</label>
         <input
           type="number"
           name=""
           id=""
-          //   value={}
-          //   onChange={}
+          value={timeMax}
+          onChange={handleTimeMax}
         />
         <fieldset>
           <legend>Difficulty:</legend>
@@ -95,7 +128,7 @@ function GameForm(
             name="gameWeight"
             id=""
             value="Easy"
-            //   onChange={}
+            onChange={handleGameWeight}
           />
           <label htmlFor="">Medium:</label>
           <input
@@ -103,8 +136,7 @@ function GameForm(
             name="gameWeight"
             id=""
             value="Medium"
-
-            //   onChange={}
+            onChange={handleGameWeight}
           />
           <label htmlFor="">Complex:</label>
           <input
@@ -112,12 +144,12 @@ function GameForm(
             name="gameWeight"
             id=""
             value="Complex"
-            //   onChange={}
+            onChange={handleGameWeight}
           />
         </fieldset>
 
         <label htmlFor="">In Circulation:</label>
-        <input type="checkbox" />
+        <input type="checkbox" checked={inCirc} onChange={handleInCirc} />
         <label htmlFor="">Tags:</label>
         <button>Submit</button>
       </form>
