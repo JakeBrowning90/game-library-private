@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useParams, useNavigate } from "react-router";
 import { apiurl } from "../apiSource";
 
@@ -17,10 +17,31 @@ function GameForm(
   const [playerCtMax, setPlayerCtMax] = useState(0);
   const [gameWeight, setGameWeight] = useState("");
   const [inCirc, setInCirc] = useState(false);
+  const [tagList, setTagList] = useState([]);
   const [gameSubmitError, setGameSubmitError] = useState([]);
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   // Functions
   const navigate = useNavigate();
+
+  useEffect(() => {
+    fetch(apiurl + "tag", {
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => {
+        if (response.status >= 400) {
+          throw new Error("Tag list fetch error");
+        }
+        return response.json();
+      })
+      .then((response) => setTagList(response))
+      .catch((error) => setError(error))
+      .finally(() => setLoading(false));
+  }, []);
 
   const handleTitle = (e) => {
     setTitle(e.target.value);
@@ -80,11 +101,14 @@ function GameForm(
   }
 
   // Render
+  if (loading) return <p>Loading tag list...</p>;
+  if (error) return <p>Network error, please try again later.</p>;
+
   return (
     <div>
       <Link to={"/games"}>Back</Link>
       <p>Add New Game</p>
-      
+
       <form onSubmit={submitNewGame}>
         <ul>
           {gameSubmitError.map((err) => {
@@ -177,7 +201,17 @@ function GameForm(
 
         <label htmlFor="">In Circulation:</label>
         <input type="checkbox" checked={inCirc} onChange={handleInCirc} />
-        <label htmlFor="">Tags:</label>
+        <fieldset htmlFor="">
+          <legend>Tags</legend>
+          {tagList.map((tag) => {
+            return (
+              <div>
+                <label>{tag.tagName}</label>
+                <input type="checkbox" />
+              </div>
+            );
+          })}
+        </fieldset>
         <button>Submit</button>
       </form>
     </div>

@@ -46,6 +46,7 @@ function GameDetail(
         {targetGame.playerCtMin} - {targetGame.playerCtMax} players
       </p>
       <p>
+        {/* Todo: conditional render if playtime is single number instead of range */}
         {targetGame.timeMin} - {targetGame.timeMax} min.
       </p>
       <p>{targetGame.gameWeight}</p>
