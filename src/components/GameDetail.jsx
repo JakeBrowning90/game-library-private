@@ -51,6 +51,7 @@ function GameDetail(
       </p>
       <p>{targetGame.gameWeight}</p>
       {targetGame.inCirc ? <p>Available</p> : <p>Unavailable</p>}
+      <p>TODO - Nav to Edit / Delete page </p>
     </div>
   );
 }

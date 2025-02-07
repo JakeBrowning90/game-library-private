@@ -205,9 +205,9 @@ function GameForm(
           <legend>Tags</legend>
           {tagList.map((tag) => {
             return (
-              <div>
+              <div key={tag.id}>
                 <label>{tag.tagName}</label>
-                <input type="checkbox" />
+                <input type="checkbox" value={tag.id}/>
               </div>
             );
           })}
