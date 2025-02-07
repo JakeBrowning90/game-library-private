@@ -18,6 +18,7 @@ function GameForm(
   const [gameWeight, setGameWeight] = useState("");
   const [inCirc, setInCirc] = useState(false);
   const [tagList, setTagList] = useState([]);
+  const [checkedTags, setCheckedTags] = useState([]);
   const [gameSubmitError, setGameSubmitError] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -70,6 +71,15 @@ function GameForm(
   const handleInCirc = () => {
     setInCirc(!inCirc);
   };
+  const handleTags = (e) => {
+    if (e.target.checked) {
+      setCheckedTags(checkedTags.concat(parseInt(e.target.value)));
+    } else {
+      setCheckedTags(
+        checkedTags.filter((tag) => tag !== parseInt(e.target.value))
+      );
+    }
+  };
 
   async function submitNewGame(e) {
     e.preventDefault();
@@ -90,6 +100,7 @@ function GameForm(
         ageRec: ageRec,
         gameWeight: gameWeight,
         inCirc: inCirc,
+        tags: checkedTags,
       }),
     });
     const newGameResponse = await response.json();
@@ -207,7 +218,12 @@ function GameForm(
             return (
               <div key={tag.id}>
                 <label>{tag.tagName}</label>
-                <input type="checkbox" value={tag.id}/>
+                <input
+                  type="checkbox"
+                  value={tag.id}
+                  // checked={checkedTags[tag.id]}
+                  onChange={handleTags}
+                />
               </div>
             );
           })}
