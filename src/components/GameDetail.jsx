@@ -51,6 +51,21 @@ function GameDetail(
       </p>
       <p>{targetGame.gameWeight}</p>
       {targetGame.inCirc ? <p>Available</p> : <p>Unavailable</p>}
+
+      {targetGame.tags.length == 0 ? (
+        <p>No tags applied</p>
+      ) : (
+        <ul>
+          {targetGame.tags.map((tag) => {
+            return (
+              <li key={tag.id}>
+                <p>{tag.tagName}</p>
+              </li>
+            );
+          })}
+        </ul>
+      )}
+
       <p>TODO - Nav to Edit / Delete page </p>
     </div>
   );
