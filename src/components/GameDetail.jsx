@@ -66,7 +66,7 @@ function GameDetail(
         </ul>
       )}
 
-      <p>TODO - Nav to Edit / Delete page </p>
+      <Link to={`/games/${targetGame.id}/edit`}>Edit/Delete</Link>
     </div>
   );
 }

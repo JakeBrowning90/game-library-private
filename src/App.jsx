@@ -7,6 +7,7 @@ import UserList from "./components/UserList";
 import TagList from "./components/TagList";
 import TagEditScreen from "./components/TagEditScreen";
 import GameList from "./components/GameList";
+import GameEdit from "./components/GameEdit";
 import GameForm from "./components/GameForm";
 import GameDetail from "./components/GameDetail";
 import ErrorScreen from "./components/ErrorScreen";
@@ -106,7 +107,14 @@ function App() {
               </ProtectedRoute>
             }
           ></Route>
-
+          <Route
+            path="games/:gameId/edit"
+            element={
+              <ProtectedRoute>
+                <GameEdit />
+              </ProtectedRoute>
+            }
+          ></Route>
           <Route path="login" element={<LoginScreen />} />
           <Route path="signup" element={<SignupScreen />} />
           <Route path="*" element={<ErrorScreen />} />
