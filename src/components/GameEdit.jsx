@@ -9,16 +9,30 @@ function GameEdit(
 ) {
   // State declarations
   // Functions
+  const navigate = useNavigate();
   const { gameId } = useParams();
+
+  async function deleteGame(e) {
+    e.preventDefault();
+    await fetch(apiurl + "game/" + gameId, {
+      method: "DELETE",
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    navigate("/games");
+  }
 
   // Render
   return (
     <div>
       <Link to={`/games/${gameId}`}>Back</Link>
-      <p> Game Edit Page</p>
-
+      <p>Game Edit Page</p>
       <p>TODO - Form to edit game info</p>
-      <p>TODO - Form to delete game</p>
+      <form onSubmit={deleteGame}>
+        <button>Delete Game</button>
+      </form>
     </div>
   );
 }
