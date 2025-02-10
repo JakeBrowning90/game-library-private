@@ -1,19 +1,45 @@
-import React, { useState } from "react";
-// import apiSource
+import React, { useState, useEffect } from "react";
+import { apiurl } from "../apiSource";
 
-function ComponentName(
-  {
-    // Props
-  }
-) {
+function GameFormMOD({
+  // Props
+  loading,
+  error,
+  submitAction,
+  submitError,
+  title,
+  desc,
+  ageRec,
+  playerCtMin,
+  playerCtMax,
+  timeMin,
+  timeMax,
+  inCirc,
+  tagList,
+  handleTitle,
+  handleDesc,
+  handleAgeRec,
+  handlePlayerCtMin,
+  handlePlayerCtMax,
+  handleTimeMin,
+  handleTimeMax,
+  handleGameWeight,
+  handleInCirc,
+  handleTags,
+}) {
   // State declarations
+
   // Functions
+
   // Render
+  if (loading) return <p>Loading tag list...</p>;
+  if (error) return <p>Network error, please try again later.</p>;
+
   return (
-    <form onSubmit={submitNewGame}>
+    <form onSubmit={submitAction}>
       <ul>
-        {gameSubmitError.map((err) => {
-          return <li key={gameSubmitError.indexOf(err)}>{err.msg}</li>;
+        {submitError.map((err) => {
+          return <li key={submitError.indexOf(err)}>{err.msg}</li>;
         })}
       </ul>
       <label htmlFor="title">Title:</label>
@@ -56,19 +82,19 @@ function ComponentName(
         value={playerCtMax}
         onChange={handlePlayerCtMax}
       />
-      <label htmlFor="">Time Min:</label>
+      <label htmlFor="timeMin">Time Min:</label>
       <input
         type="number"
-        name=""
-        id=""
+        name="timeMin"
+        id="timeMin"
         value={timeMin}
         onChange={handleTimeMin}
       />
-      <label htmlFor="">Time Max:</label>
+      <label htmlFor="timeMax">Time Max:</label>
       <input
         type="number"
-        name=""
-        id=""
+        name="timeMax"
+        id="timeMax"
         value={timeMax}
         onChange={handleTimeMax}
       />
@@ -78,7 +104,7 @@ function ComponentName(
         <input
           type="radio"
           name="gameWeight"
-          id=""
+          id="gameWeight"
           value="Easy"
           onChange={handleGameWeight}
         />
@@ -86,7 +112,7 @@ function ComponentName(
         <input
           type="radio"
           name="gameWeight"
-          id=""
+          id="gameWeight"
           value="Medium"
           onChange={handleGameWeight}
         />
@@ -94,14 +120,20 @@ function ComponentName(
         <input
           type="radio"
           name="gameWeight"
-          id=""
+          id="gameWeight"
           value="Complex"
           onChange={handleGameWeight}
         />
       </fieldset>
 
-      <label htmlFor="">In Circulation:</label>
-      <input type="checkbox" checked={inCirc} onChange={handleInCirc} />
+      <label htmlFor="inCirc">In Circulation:</label>
+      <input
+        type="checkbox"
+        name="inCirc"
+        id="inCirc"
+        checked={inCirc}
+        onChange={handleInCirc}
+      />
       <fieldset htmlFor="">
         <legend>Tags</legend>
         {tagList.map((tag) => {
@@ -123,4 +155,4 @@ function ComponentName(
   );
 }
 
-// export default ComponentName
+export default GameFormMOD;

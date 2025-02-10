@@ -66,7 +66,7 @@ function GameDetail(
         </ul>
       )}
 
-      <Link to={`/games/${targetGame.id}/edit`}>Edit/Delete</Link>
+      <Link to={`/games/${gameId}/edit`}>Edit/Delete</Link>
     </div>
   );
 }

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams, useNavigate } from "react-router";
 import { apiurl } from "../apiSource";
+import GameFormMOD from "./GameFormMOD";
 
 function GameForm(
   {
@@ -112,15 +113,39 @@ function GameForm(
   }
 
   // Render
-  if (loading) return <p>Loading tag list...</p>;
-  if (error) return <p>Network error, please try again later.</p>;
+  // if (loading) return <p>Loading tag list...</p>;
+  // if (error) return <p>Network error, please try again later.</p>;
 
   return (
     <div>
       <Link to={"/games"}>Back</Link>
       <p>Add New Game</p>
-
-      <form onSubmit={submitNewGame}>
+      <GameFormMOD
+        loading={loading}
+        error={error}
+        submitAction={submitNewGame}
+        submitError={gameSubmitError}
+        title={title}
+        desc={desc}
+        ageRec={ageRec}
+        playerCtMin={playerCtMin}
+        setPlayerCtMax={playerCtMax}
+        timeMin={timeMin}
+        timeMax={timeMax}
+        inCirc={inCirc}
+        tagList={tagList}
+        handleTitle={handleTitle}
+        handleDesc={handleDesc}
+        handleAgeRec={handleAgeRec}
+        handlePlayerCtMin={handlePlayerCtMin}
+        handlePlayerCtMax={handlePlayerCtMax}
+        handleTimeMin={handleTimeMin}
+        handleTimeMax={handleTimeMax}
+        handleGameWeight={handleGameWeight}
+        handleInCirc={handleInCirc}
+        handleTags={handleTags}
+      />
+      {/* <form onSubmit={submitNewGame}>
         <ul>
           {gameSubmitError.map((err) => {
             return <li key={gameSubmitError.indexOf(err)}>{err.msg}</li>;
@@ -229,7 +254,7 @@ function GameForm(
           })}
         </fieldset>
         <button>Submit</button>
-      </form>
+      </form> */}
     </div>
   );
 }

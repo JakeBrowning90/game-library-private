@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams, useNavigate } from "react-router";
+import GameFormMOD from "./GameFormMOD";
 import { apiurl } from "../apiSource";
 
 function GameEdit(
@@ -59,8 +60,29 @@ function GameEdit(
     <div>
       <Link to={`/games/${gameId}`}>Back</Link>
       <p>Game Edit Page</p>
-      <p>TODO - Form to edit game info</p>
-      <form onSubmit={deleteGame}>
+      <GameFormMOD
+        submitAction={submitGameEdit}
+        submitError={gameSubmitError}
+        title={title}
+        desc={desc}
+        ageRec={ageRec}
+        playerCtMin={playerCtMin}
+        setPlayerCtMax={playerCtMax}
+        timeMin={timeMin}
+        timeMax={timeMax}
+        inCirc={inCirc}
+        tagList={tagList}
+        handleTitle={handleTitle}
+        handleDesc={handleDesc}
+        handleAgeRec={handleAgeRec}
+        handlePlayerCtMin={handlePlayerCtMin}
+        handlePlayerCtMax={handlePlayerCtMax}
+        handleTimeMin={handleTimeMin}
+        handleTimeMax={handleTimeMax}
+        handleGameWeight={handleGameWeight}
+        handleInCirc={handleInCirc}
+        handleTags={handleTags}
+      />      <form onSubmit={deleteGame}>
         <button>Delete Game</button>
       </form>
     </div>
