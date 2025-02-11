@@ -8,7 +8,7 @@ import TagList from "./components/TagList";
 import TagEditScreen from "./components/TagEditScreen";
 import GameList from "./components/GameList";
 import GameEdit from "./components/GameEdit";
-import GameForm from "./components/GameForm";
+import GameNew from "./components/GameNew";
 import GameDetail from "./components/GameDetail";
 import ErrorScreen from "./components/ErrorScreen";
 
@@ -94,7 +94,7 @@ function App() {
             path="games/new"
             element={
               <ProtectedRoute>
-                <GameForm />
+                <GameNew />
               </ProtectedRoute>
             }
           ></Route>
