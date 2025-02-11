@@ -3,8 +3,8 @@ import { apiurl } from "../apiSource";
 
 function GameForm({
   // Props
-  loading,
-  error,
+  // loading,
+  // error,
   submitAction,
   submitError,
   title,
@@ -14,8 +14,9 @@ function GameForm({
   playerCtMax,
   timeMin,
   timeMax,
+  gameWeight,
   inCirc,
-  tagList,
+  // tagList,
   checkedTags,
   handleTitle,
   handleDesc,
@@ -29,13 +30,29 @@ function GameForm({
   handleTags,
 }) {
   // State declarations
+  const [tagList, setTagList] = useState([]);
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   // Functions
-  // const isSelectedTag = (id) => {
-  //   if (checkedTags.some((tag) => tag.id === id)) {
-  //     return true;
-  //   }
-  // };
+
+  useEffect(() => {
+    fetch(apiurl + "tag", {
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => {
+        if (response.status >= 400) {
+          throw new Error("Tag list fetch error");
+        }
+        return response.json();
+      })
+      .then((response) => setTagList(response))
+      .catch((error) => setError(error))
+      .finally(() => setLoading(false));
+  }, []);
 
   // Render
   if (loading) return <p>Loading tag list...</p>;
@@ -110,25 +127,28 @@ function GameForm({
         <input
           type="radio"
           name="gameWeight"
-          id="gameWeight"
+          id="gameWeight1"
           value="Easy"
           onChange={handleGameWeight}
+          defaultChecked={gameWeight === "Easy"}
         />
         <label htmlFor="">Medium:</label>
         <input
           type="radio"
           name="gameWeight"
-          id="gameWeight"
+          id="gameWeight2"
           value="Medium"
           onChange={handleGameWeight}
+          defaultChecked={gameWeight === "Medium"}
         />
         <label htmlFor="">Complex:</label>
         <input
           type="radio"
           name="gameWeight"
-          id="gameWeight"
+          id="gameWeight3"
           value="Complex"
           onChange={handleGameWeight}
+          defaultChecked={gameWeight === "Complex"}
         />
       </fieldset>
 
@@ -149,7 +169,7 @@ function GameForm({
               <input
                 type="checkbox"
                 value={tag.id}
-                defaultChecked={checkedTags.some((e) => e.id === tag.id)}
+                defaultChecked={checkedTags.some((e) => e === tag.id)}
                 onChange={handleTags}
               />
             </div>

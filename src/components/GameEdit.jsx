@@ -18,7 +18,7 @@ function GameEdit(
   const [playerCtMax, setPlayerCtMax] = useState(0);
   const [gameWeight, setGameWeight] = useState("");
   const [inCirc, setInCirc] = useState(false);
-  const [tagList, setTagList] = useState([]);
+  // const [tagList, setTagList] = useState([]);
   const [checkedTags, setCheckedTags] = useState([]);
   const [gameSubmitError, setGameSubmitError] = useState([]);
   const [error, setError] = useState(null);
@@ -79,7 +79,6 @@ function GameEdit(
         return response.json();
       })
       .then((response) => {
-        // console.log(response);
         setTitle(response.title);
         setDesc(response.desc);
         setAgeRec(response.ageRec);
@@ -89,34 +88,41 @@ function GameEdit(
         setTimeMax(response.timeMax);
         setGameWeight(response.gameWeight);
         setInCirc(response.inCirc);
-        setCheckedTags(response.tags)
-        console.log(response.tags);
+        // setCheckedTags(response.tags);
+        setCheckedTags(response.tags.map(tag => tag.id))
       })
-      .catch((error) => setError(error))
-      .finally(() => setLoading(false));
-  }, []);
-
-  useEffect(() => {
-    fetch(apiurl + "tag", {
-      mode: "cors",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((response) => {
-        if (response.status >= 400) {
-          throw new Error("Tag list fetch error");
-        }
-        return response.json();
-      })
-      .then((response) => setTagList(response))
       .catch((error) => setError(error))
       .finally(() => setLoading(false));
   }, []);
 
   async function submitGameEdit(e) {
     e.preventDefault();
-    console.log("Edits submitted!");
+    const response = await fetch(apiurl + "game/" + gameId, {
+      method: "PUT",
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/json",
+        authorization: localStorage.getItem("token"),
+      },
+      body: JSON.stringify({
+        title: title,
+        desc: desc,
+        timeMin: timeMin,
+        timeMax: timeMax,
+        playerCtMin: playerCtMin,
+        playerCtMax: playerCtMax,
+        ageRec: ageRec,
+        gameWeight: gameWeight,
+        inCirc: inCirc,
+        tags: checkedTags,
+      }),
+    });
+    const editGameResponse = await response.json();
+    if (Array.isArray(editGameResponse.errors)) {
+      setGameSubmitError(editGameResponse.errors);
+    } else {
+      navigate("/games/" + gameId);
+    }
   }
 
   async function deleteGame(e) {
@@ -148,8 +154,9 @@ function GameEdit(
         playerCtMax={playerCtMax}
         timeMin={timeMin}
         timeMax={timeMax}
+        gameWeight={gameWeight}
         inCirc={inCirc}
-        tagList={tagList}
+        // tagList={tagList}
         checkedTags={checkedTags}
         handleTitle={handleTitle}
         handleDesc={handleDesc}
