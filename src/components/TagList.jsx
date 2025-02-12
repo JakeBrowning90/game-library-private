@@ -23,7 +23,6 @@ function TagList(
   const [loading, setLoading] = useState(true);
 
   // Functions
-
   useEffect(() => {
     fetch(apiurl + "tag", {
       mode: "cors",
@@ -45,26 +44,26 @@ function TagList(
   const handleQuery = (e) => {
     setQuery(e.target.value);
   };
+
   const handleNewTag = (e) => {
     setNewTag(e.target.value);
   };
 
   async function submitQuery(e) {
     e.preventDefault();
-    console.log(query);
     await fetch(apiurl + `tag/?tagname=${query}`, {
       mode: "cors",
       headers: {
         "Content-Type": "application/json",
       },
     })
-    .then((response) => {
-      if (response.status >= 400) {
-        throw new Error("Tag list fetch error");
-      }
-      return response.json();
-    })
-    .then((response) => setTagList(response))
+      .then((response) => {
+        if (response.status >= 400) {
+          throw new Error("Tag list fetch error");
+        }
+        return response.json();
+      })
+      .then((response) => setTagList(response));
   }
 
   async function submitNewTag(e) {
