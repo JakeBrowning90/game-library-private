@@ -44,7 +44,12 @@ function UserList(
           {userList.map((user) => {
             return (
               <li key={user.id}>
-                <p>{user.username}</p>
+                <p>
+                  {user.username} {user.isAdmin && "Admin"}
+                  {user.isDemo && "Demo"}
+                  {user.isConfirmed && "Confirmed"}
+                </p>
+
                 {/* Link to details, edit form, delete option */}
               </li>
             );
