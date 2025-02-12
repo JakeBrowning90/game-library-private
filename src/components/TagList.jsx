@@ -52,6 +52,19 @@ function TagList(
   async function submitQuery(e) {
     e.preventDefault();
     console.log(query);
+    await fetch(apiurl + `tag/?tagname=${query}`, {
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+    .then((response) => {
+      if (response.status >= 400) {
+        throw new Error("Tag list fetch error");
+      }
+      return response.json();
+    })
+    .then((response) => setTagList(response))
   }
 
   async function submitNewTag(e) {
@@ -113,17 +126,21 @@ function TagList(
       {tagList.length == 0 ? (
         <p>No tags found</p>
       ) : (
-        <ul>
-          {tagList.map((tag) => {
-            return (
-              <li key={tag.id}>
-                <p>{tag.tagName}</p>
-                {/* Link to edit or delete tag */}
-                <Link to={`/tags/${tag.id}`}>Edit</Link>
-              </li>
-            );
-          })}
-        </ul>
+        <>
+          <p>{tagList.length} results:</p>
+
+          <ul>
+            {tagList.map((tag) => {
+              return (
+                <li key={tag.id}>
+                  <p>{tag.tagName}</p>
+                  {/* Link to edit or delete tag */}
+                  <Link to={`/tags/${tag.id}`}>Edit</Link>
+                </li>
+              );
+            })}
+          </ul>
+        </>
       )}
       <Outlet />
     </div>
