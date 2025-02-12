@@ -15,6 +15,7 @@ function TagList(
   }
 ) {
   // State declarations
+  const [query, setQuery] = useState("");
   const [newTag, setNewTag] = useState("");
   const [tagList, setTagList] = useState([]);
   const [tagSubmitError, setTagSubmitError] = useState([]);
@@ -41,9 +42,17 @@ function TagList(
       .finally(() => setLoading(false));
   }, []);
 
+  const handleQuery = (e) => {
+    setQuery(e.target.value);
+  };
   const handleNewTag = (e) => {
     setNewTag(e.target.value);
   };
+
+  async function submitQuery(e) {
+    e.preventDefault();
+    console.log(query);
+  }
 
   async function submitNewTag(e) {
     e.preventDefault();
@@ -72,7 +81,7 @@ function TagList(
   return (
     <div>
       <p>Tag List</p>
-      <p>To-do: Search Bar</p>
+
       <form onSubmit={submitNewTag}>
         {/* Show errors */}
         <ul>
@@ -80,7 +89,7 @@ function TagList(
             return <li key={tagSubmitError.indexOf(err)}>{err.msg}</li>;
           })}
         </ul>
-        <label htmlFor="newTag">New Tag:</label>
+        <label htmlFor="newTag">Create New Tag:</label>
         <input
           type="text"
           name="newTag"
@@ -89,6 +98,17 @@ function TagList(
           onChange={handleNewTag}
         />
         <button>Submit</button>
+      </form>
+      <form onSubmit={submitQuery}>
+        <label htmlFor="">Search Tags:</label>
+        <input
+          type="text"
+          name="queryTag"
+          id="queryTag"
+          value={query}
+          onChange={handleQuery}
+        />
+        <button>Search</button>
       </form>
       {tagList.length == 0 ? (
         <p>No tags found</p>
