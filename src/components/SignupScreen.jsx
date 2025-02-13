@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router";
 import { apiurl } from "../apiSource";
 
 function SignupScreen(
@@ -13,6 +14,9 @@ function SignupScreen(
   const [confirmPassword, setConfirmPassword] = useState("");
 
   // Functions
+
+  const navigate = useNavigate();
+
   function handleUsername(e) {
     setUsername(e.target.value);
   }
@@ -39,12 +43,21 @@ function SignupScreen(
       }),
     });
     const signupResponse = await response.json();
-    console.log(signupResponse);
+    if (Array.isArray(signupResponse.errors)) {
+      setSignupErrors(signupResponse.errors);
+    } else {
+      navigate("/login");
+    }
   }
   // Render
   return (
     <>
       <div>Signup Screen</div>
+      <ul>
+        {signupErrors.map((err) => {
+          return <li key={signupErrors.indexOf(err)}>{err.msg}</li>;
+        })}
+      </ul>
       <form onSubmit={submitSignup}>
         <label htmlFor="username">Username:</label>
         <input

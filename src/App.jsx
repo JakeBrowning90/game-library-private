@@ -2,8 +2,10 @@ import { useState } from "react";
 import LoginScreen from "./components/LoginScreen";
 import SignupScreen from "./components/SignupScreen";
 import ProtectedRoute from "./components/ProtectedRoute";
+import AdminOnlyRoute from "./components/AdminOnlyRoute";
 import HomeScreen from "./components/HomeScreen";
 import UserList from "./components/UserList";
+import UserDetail from "./components/UserDetail";
 import TagList from "./components/TagList";
 import TagEditScreen from "./components/TagEditScreen";
 import GameList from "./components/GameList";
@@ -60,7 +62,19 @@ function App() {
             path="users"
             element={
               <ProtectedRoute>
-                <UserList />
+                <AdminOnlyRoute>
+                  <UserList />
+                </AdminOnlyRoute>
+              </ProtectedRoute>
+            }
+          />
+           <Route
+            path="users/:userId"
+            element={
+              <ProtectedRoute>
+                <AdminOnlyRoute>
+                  <UserDetail />
+                </AdminOnlyRoute>
               </ProtectedRoute>
             }
           />

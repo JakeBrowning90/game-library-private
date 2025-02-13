@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router";
 import { apiurl } from "../apiSource";
 
 function UserList(
@@ -45,12 +46,11 @@ function UserList(
             return (
               <li key={user.id}>
                 <p>
-                  {user.username} {user.isAdmin && "Admin"}
+                  {user.username} - {user.isAdmin ? "Admin" : "Basic"}
+                  {!user.isConfirmed && " - Pending"}
                   {user.isDemo && "Demo"}
-                  {user.isConfirmed && "Confirmed"}
                 </p>
-
-                {/* Link to details, edit form, delete option */}
+                <Link to={`/users/${user.id}`}>Edit</Link>
               </li>
             );
           })}

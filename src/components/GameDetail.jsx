@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, useParams, useNavigate } from "react-router";
+import { Link, useParams } from "react-router";
 import { apiurl } from "../apiSource";
 
 function GameDetail(
@@ -12,7 +12,6 @@ function GameDetail(
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
   // Functions
-  const navigate = useNavigate();
   const { gameId } = useParams();
 
   useEffect(() => {

@@ -63,8 +63,6 @@ function GameNew(
 
   async function submitNewGame(e) {
     e.preventDefault();
-    // How are the tags being saved?
-    console.log(checkedTags);
     const response = await fetch(apiurl + "game", {
       method: "POST",
       mode: "cors",

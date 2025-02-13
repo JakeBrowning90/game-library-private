@@ -39,21 +39,17 @@ function LoginScreen(
       setInvalidLogin(true);
     } else {
       const loginResponse = await response.json();
-      // console.log(loginResponse);
       // Set user and token to local storage
       localStorage.setItem("username", loginResponse.username);
       localStorage.setItem("id", loginResponse.id);
       localStorage.setItem("isAdmin", loginResponse.isAdmin);
       localStorage.setItem("isDemo", loginResponse.isDemo);
+      localStorage.setItem("isConfirmed", loginResponse.isConfirmed);
       localStorage.setItem("token", `Bearer ${loginResponse.token}`);
-      // console.log(localStorage);
       setInvalidLogin(false);
       // Redirect to home
       window.location.href = "/";
     }
-    // setCurrentUser(true);
-    // navToHome();
-    // window.location.href = "/"
   }
 
   // Render
