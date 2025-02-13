@@ -1,5 +1,13 @@
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  --dark-blue: #0d203b;
+  --off-white: #fff;
+  color: var(--off-white);
+}
+
+* {
+  padding: 0;
+  margin: 0;
 }
 
 body {
@@ -8,6 +16,7 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  color: var(--off-white);
 }
 
 h1 {
@@ -55,10 +64,17 @@ button:focus-visible {
   flex-direction: column;
 }
 
-/* body {
-  display: flex;
-  flex-direction: column;
-} */
+a {
+  color: var(--off-white);
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+.pageHeader {
+  color: var(--dark-blue);
+}
 
 header,
 nav {
@@ -67,23 +83,37 @@ nav {
 }
 
 header {
-  background-color: rgb(192, 192, 255);
+  background-color: var(--dark-blue);
   justify-content: space-between;
+  padding: 5px;
 }
 
 main {
-  background-color: rgb(255, 222, 204);
+  background-color: rgb(186, 186, 186);
+  padding: 5px;
   flex-grow: 1;
   display: flex;
   flex-direction: column;
 }
 
-.mainHome {
+.mainDiv {
   display: flex;
   flex-direction: column;
+  gap: 10px;
+}
+
+.mainButton {
+  border-radius: 20px;
 }
 
 form {
   display: flex;
   flex-direction: column;
+}
+
+.blueBlock {
+  padding: 10px;
+  gap: 5px;
+  background-color: var(--dark-blue);
+  border: 2px solid var(--off-white);
 }

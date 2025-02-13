@@ -58,10 +58,13 @@ function GameList(
   if (error) return <p>Network error, please try again later.</p>;
 
   return (
-    <div>
-      <p>Game List</p>
-      <Link to={"new"}>Add New Game</Link>
-      <form onSubmit={submitQuery}>
+    <div className="mainDiv">
+      <h1 className="pageHeader">Game List</h1>
+
+      <Link to={"new"} className="mainButton blueBlock">
+        Add New Game
+      </Link>
+      <form onSubmit={submitQuery} className="blueBlock">
         <p>Search Games</p>
         <label htmlFor="queryTag">Title:</label>
         <input

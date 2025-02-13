@@ -36,7 +36,7 @@ function UserList(
 
   return (
     <div>
-      <p>User List</p>
+      <h1 className="pageHeader">User List</h1>
       <p>To-do: Search Bar</p>
       {userList.length == 0 ? (
         <p>No users found</p>

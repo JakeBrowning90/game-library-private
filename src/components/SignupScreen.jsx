@@ -50,15 +50,15 @@ function SignupScreen(
   // Render
   return (
     <>
-      <p>Signup</p>
-      <p>New Users must be validated by Admin</p>
+      <form className="blueBlock" onSubmit={submitSignup}>
+        <h1>Signup</h1>
+        <p>New Users must be validated by Admin</p>
 
-      <ul>
-        {signupErrors.map((err) => {
-          return <li key={signupErrors.indexOf(err)}>{err.msg}</li>;
-        })}
-      </ul>
-      <form onSubmit={submitSignup}>
+        <ul>
+          {signupErrors.map((err) => {
+            return <li key={signupErrors.indexOf(err)}>{err.msg}</li>;
+          })}
+        </ul>
         <label htmlFor="username">Username:</label>
         <input
           type="text"

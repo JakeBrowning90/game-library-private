@@ -11,12 +11,18 @@ function HomeScreen(
   // Render
   return (
     <>
-      <div className="mainHome">
-        <div>Home Screen</div>
-        <Link to="/games">Manage Games</Link>
-        <Link to="/tags">Manage Tags</Link>
+      <div className="mainDiv">
+        <h1 className="pageHeader">Home Screen</h1>
+        <Link to="/games" className="mainButton blueBlock">
+          Manage Games
+        </Link>
+        <Link to="/tags" className="mainButton blueBlock">
+          Manage Tags
+        </Link>
         {localStorage.length > 0 && JSON.parse(localStorage.isAdmin) && (
-          <Link to="/users">Manage Users</Link>
+          <Link to="/users" className="mainButton blueBlock">
+            Manage Users
+          </Link>
         )}
       </div>
     </>

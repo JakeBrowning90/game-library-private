@@ -84,16 +84,16 @@ function TagList(
   if (error) return <p>Network error, please try again later.</p>;
 
   return (
-    <div>
-      <p>Tag List</p>
+    <div className="mainDiv">
+      <h1 className="pageHeader">Tag List</h1>
 
-      <form onSubmit={submitNewTag}>
+      <form onSubmit={submitNewTag} className="blueBlock">
+        <label htmlFor="newTag">Create New Tag:</label>
         <ul>
           {tagSubmitError.map((err) => {
             return <li key={tagSubmitError.indexOf(err)}>{err.msg}</li>;
           })}
         </ul>
-        <label htmlFor="newTag">Create New Tag:</label>
         <input
           type="text"
           name="newTag"
@@ -103,7 +103,7 @@ function TagList(
         />
         <button>Submit</button>
       </form>
-      <form onSubmit={submitQuery}>
+      <form onSubmit={submitQuery} className="blueBlock">
         <label htmlFor="queryTag">Search Tags:</label>
         <input
           type="text"

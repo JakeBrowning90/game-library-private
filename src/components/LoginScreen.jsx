@@ -53,9 +53,9 @@ function LoginScreen(
   // Render
   return (
     <>
-      <div>Login</div>
-      {invalidLogin && <p>Invalid login</p>}
-      <form action="">
+      <form className="blueBlock" onSubmit={submitLogin}>
+        <h1>Login</h1>
+        {invalidLogin && <p>Invalid login</p>}
         <label htmlFor="username">Username:</label>
         <input
           type="text"
@@ -70,7 +70,7 @@ function LoginScreen(
           value={password}
           onChange={handlePassword}
         />
-        <button onClick={submitLogin}>Submit</button>
+        <button>Submit</button>
       </form>
     </>
   );
