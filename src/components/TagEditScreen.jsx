@@ -78,16 +78,17 @@ function TagEditScreen(
   if (loading) return <p>Loading tag info...</p>;
   if (error) return <p>Network error, please try again later.</p>;
   return (
-    <div>
+    <div className="mainDiv">
       <Link to={"/tags"}>Back</Link>
 
-      <p>Manage Tag</p>
-      <form onSubmit={editTag}>
+      <h1 className="pageHeader">Manage Tag</h1>
+      <form onSubmit={editTag} className="blueBlock">
         <ul>
           {tagSubmitError.map((err) => {
             return <li key={tagSubmitError.indexOf(err)}>{err.msg}</li>;
           })}
         </ul>
+        <h2>Edit Tag Name</h2>
         <label htmlFor="targetTag">Tag Name:</label>
         <input
           type="text"
@@ -98,8 +99,9 @@ function TagEditScreen(
         />
         <button>Save Change</button>
       </form>
-      <form onSubmit={deleteTag}>
-        <button>Delete Tag</button>
+      <form onSubmit={deleteTag} className="blueBlock">
+        <h2>Delete this Tag?</h2>
+        <button>Delete</button>
       </form>
     </div>
   );

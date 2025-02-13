@@ -56,7 +56,7 @@ function GameForm({
   if (error) return <p>Network error, please try again later.</p>;
 
   return (
-    <form onSubmit={submitAction}>
+    <form onSubmit={submitAction} className="blueBlock">
       <ul>
         {submitError.map((err) => {
           return <li key={submitError.indexOf(err)}>{err.msg}</li>;

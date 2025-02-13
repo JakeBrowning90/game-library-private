@@ -115,15 +115,15 @@ function TagList(
         <button>Search</button>
       </form>
       {tagList.length == 0 ? (
-        <p>No tags found</p>
+        <h2 className="pageHeader">No tags found</h2>
       ) : (
         <>
-          <p>{tagList.length} results:</p>
+          <h2 className="pageHeader">{tagList.length} tags found:</h2>
 
           <ul>
             {tagList.map((tag) => {
               return (
-                <li key={tag.id}>
+                <li key={tag.id} className="blueBlock tagLI">
                   <p>{tag.tagName}</p>
                   <Link to={`/tags/${tag.id}`}>Edit</Link>
                 </li>

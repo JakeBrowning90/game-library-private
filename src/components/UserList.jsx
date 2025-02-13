@@ -35,19 +35,23 @@ function UserList(
   if (error) return <p>Network error, please try again later.</p>;
 
   return (
-    <div>
+    <div className="mainDiv">
       <h1 className="pageHeader">User List</h1>
-      <p>To-do: Search Bar</p>
+
+      <form className="blueBlock">
+        {" "}
+        <p>To-do: Search Bar</p>
+      </form>
       {userList.length == 0 ? (
         <p>No users found</p>
       ) : (
         <ul>
           {userList.map((user) => {
             return (
-              <li key={user.id}>
+              <li key={user.id} className="blueBlock">
                 <p>
                   {user.username} - {user.isAdmin ? "Admin" : "Basic"}
-                  {!user.isConfirmed && " - Pending"}
+                  {!user.isConfirmed && " - Pending Access"}
                   {user.isDemo && "Demo"}
                 </p>
                 <Link to={`/users/${user.id}`}>Edit</Link>

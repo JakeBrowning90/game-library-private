@@ -72,6 +72,10 @@ h1 {
   font-size: 2rem;
 }
 
+h2 {
+  font-size: 1.5rem;
+}
+
 .pageHeader {
   color: var(--dark-blue);
 }
@@ -96,10 +100,11 @@ main {
   flex-direction: column;
 }
 
-.mainDiv {
+.mainDiv,
+ul {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 5px;
 }
 
 .mainButton {
@@ -117,3 +122,44 @@ form {
   background-color: var(--dark-blue);
   border: 2px solid var(--off-white);
 }
+
+.gameLI {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.gameTitle {
+  grid-column: 1 / -1;
+  font-weight: bold;
+}
+
+.gameCardRow {
+  grid-column: 1 / -1;
+}
+
+.tagLI {
+  display: flex;
+  justify-content: space-between;
+}
+
+.easy {
+  background-color: green;
+  color: white;
+}
+
+.medium {
+  background-color: yellow;
+  color: black;
+}
+
+.complex {
+  background-color: red;
+  color: white;
+}
+
+.gameDetail {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+

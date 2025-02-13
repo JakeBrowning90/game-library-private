@@ -84,16 +84,16 @@ function GameList(
       </form>
 
       {gameList.length == 0 ? (
-        <p>No games found</p>
+        <h2 className="pageHeader">No games found</h2>
       ) : (
         <>
-          <p>{gameList.length} games found</p>
+          <h2 className="pageHeader">{gameList.length} games found:</h2>
           <ul>
             {gameList.map((game) => {
               return (
-                <li key={game.id}>
-                  <p>{game.title}</p>
-                  <p>{game.ageRec}+ </p>
+                <li key={game.id} className="blueBlock gameLI">
+                  <p className="gameTitle">{game.title}</p>
+                  <p>Ages {game.ageRec}+ </p>
                   <p>
                     {game.playerCtMin} - {game.playerCtMax} players
                   </p>
@@ -104,7 +104,16 @@ function GameList(
                   ) : (
                     <p>{game.timeMin} min.</p>
                   )}
-                  <p>{game.gameWeight}</p>
+                  {game.gameWeight == "Easy" && (
+                    <p className="easy">{game.gameWeight}</p>
+                  )}
+                  {game.gameWeight == "Medium" && (
+                    <p className="medium">{game.gameWeight}</p>
+                  )}
+                  {game.gameWeight == "Complex" && (
+                    <p className="complex">{game.gameWeight}</p>
+                  )}
+
                   {game.inCirc ? <p>Available</p> : <p>Unavailable</p>}
                   <Link to={`/games/${game.id}`}>Detail</Link>
                 </li>

@@ -85,21 +85,21 @@ function UserDetail(
   if (loading) return <p>Loading user info...</p>;
   if (error) return <p>Network error, please try again later.</p>;
   return (
-    <div>
+    <div className="mainDiv">
       <Link to={"/users"}>Back</Link>
-      <p>User Detail</p>
-      <p>{targetUser.username}</p>
+      <h1 className="pageHeader">User Detail:</h1>
+      <h2 className="pageHeader">{targetUser.username}</h2>
       {JSON.parse(localStorage.id) == JSON.parse(targetUser.id) ? (
         <p>Cannot edit own profile</p>
       ) : (
         <>
-          <form onSubmit={editUser}>
+          <form onSubmit={editUser} className="blueBlock">
             <ul>
               {userSubmitError.map((err) => {
                 return <li key={userSubmitError.indexOf(err)}>{err.msg}</li>;
               })}
             </ul>
-
+            <h2>Permissions:</h2>
             <label htmlFor="isConfirmed">Confirmed:</label>
             <input
               type="checkbox"
@@ -118,8 +118,9 @@ function UserDetail(
             />
             <button>Save changes</button>
           </form>
-          <form onSubmit={deleteUser}>
-            <button>Delete User</button>
+          <form onSubmit={deleteUser} className="blueBlock">
+            <h2>Delete User:</h2>
+            <button>Delete</button>
           </form>
         </>
       )}

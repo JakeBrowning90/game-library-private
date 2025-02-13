@@ -139,9 +139,9 @@ function GameEdit(
   if (loading) return <p>Loading game info...</p>;
   if (error) return <p>Network error, please try again later.</p>;
   return (
-    <div>
+    <div className="mainDiv">
       <Link to={`/games/${gameId}`}>Back</Link>
-      <p>Game Edit Page</p>
+      <h1 className="pageHeader">Edit Game</h1>
       <GameForm
         submitAction={submitGameEdit}
         submitError={gameSubmitError}
@@ -166,8 +166,9 @@ function GameEdit(
         handleInCirc={handleInCirc}
         handleTags={handleTags}
       />
-      <form onSubmit={deleteGame}>
-        <button>Delete Game</button>
+      <form onSubmit={deleteGame} className="blueBlock">
+        <h2>Delete Game?</h2>
+        <button>Delete</button>
       </form>
     </div>
   );
