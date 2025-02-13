@@ -39,18 +39,22 @@ function GameDetail(
     <div>
       <Link to={"/games"}>Back</Link>
       <p>{targetGame.title}</p>
-      <p>{targetGame.desc}</p>
       <p>{targetGame.ageRec}+ </p>
       <p>
         {targetGame.playerCtMin} - {targetGame.playerCtMax} players
       </p>
-      <p>
-        {/* Todo: conditional render if playtime is single number instead of range */}
-        {targetGame.timeMin} - {targetGame.timeMax} min.
-      </p>
+      {/* Todo: conditional render if playtime is single number instead of range */}
+      {targetGame.timeMax ? (
+        <p>
+          Playtime: {targetGame.timeMin} - {targetGame.timeMax} min.
+        </p>
+      ) : (
+        <p>Playtime: {targetGame.timeMin} min.</p>
+      )}
       <p>{targetGame.gameWeight}</p>
-      {targetGame.inCirc ? <p>Available</p> : <p>Unavailable</p>}
+      <p>{targetGame.desc}</p>
 
+      {targetGame.inCirc ? <p>Available</p> : <p>Unavailable</p>}
       {targetGame.tags.length == 0 ? (
         <p>No tags applied</p>
       ) : (
@@ -64,7 +68,6 @@ function GameDetail(
           })}
         </ul>
       )}
-
       <Link to={`/games/${gameId}/edit`}>Edit/Delete</Link>
     </div>
   );

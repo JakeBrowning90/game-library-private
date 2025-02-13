@@ -85,7 +85,7 @@ function GameEdit(
         setPlayerCtMin(response.playerCtMin);
         setPlayerCtMax(response.playerCtMax);
         setTimeMin(response.timeMin);
-        setTimeMax(response.timeMax);
+        setTimeMax(response.timeMax || "");
         setGameWeight(response.gameWeight);
         setInCirc(response.inCirc);
         // setCheckedTags(response.tags);

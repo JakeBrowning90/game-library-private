@@ -92,7 +92,7 @@ function GameForm({
       <label htmlFor="playerCtMin">Player Min:</label>
       <input
         type="number"
-        name=""
+        name="playerCtMin"
         id="playerCtMin"
         value={playerCtMin}
         onChange={handlePlayerCtMin}
@@ -123,7 +123,7 @@ function GameForm({
       />
       <fieldset>
         <legend>Difficulty:</legend>
-        <label htmlFor="">Easy:</label>
+        <label htmlFor="gameWeight1">Easy:</label>
         <input
           type="radio"
           name="gameWeight"
@@ -132,7 +132,7 @@ function GameForm({
           onChange={handleGameWeight}
           defaultChecked={gameWeight === "Easy"}
         />
-        <label htmlFor="">Medium:</label>
+        <label htmlFor="gameWeight2">Medium:</label>
         <input
           type="radio"
           name="gameWeight"
@@ -141,7 +141,7 @@ function GameForm({
           onChange={handleGameWeight}
           defaultChecked={gameWeight === "Medium"}
         />
-        <label htmlFor="">Complex:</label>
+        <label htmlFor="gameWeight3">Complex:</label>
         <input
           type="radio"
           name="gameWeight"
@@ -165,13 +165,15 @@ function GameForm({
         {tagList.map((tag) => {
           return (
             <div key={tag.id}>
-              <label>{tag.tagName}</label>
               <input
                 type="checkbox"
+                name={"checkbox" + tag.id}
+                id={"checkbox" + tag.id}
                 value={tag.id}
                 defaultChecked={checkedTags.some((e) => e === tag.id)}
                 onChange={handleTags}
               />
+              <label htmlFor={"checkbox" + tag.id}>{tag.tagName}</label>
             </div>
           );
         })}

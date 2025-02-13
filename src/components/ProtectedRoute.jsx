@@ -19,7 +19,11 @@ function ProtectedRoute({
         authorization: localStorage.getItem("token"),
       },
     }).then((response) => {
-      if (response.status != 200 || JSON.parse(localStorage.isConfirmed) == false) {
+      if (response.status != 200) {
+        localStorage.clear();
+        navigate("/login");
+      }
+      if (localStorage.length == 0 || !JSON.parse(localStorage.isConfirmed)) {
         localStorage.clear();
         navigate("/login");
       }

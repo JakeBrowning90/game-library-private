@@ -112,7 +112,7 @@ function TagList(
         <button>Submit</button>
       </form>
       <form onSubmit={submitQuery}>
-        <label htmlFor="">Search Tags:</label>
+        <label htmlFor="queryTag">Search Tags:</label>
         <input
           type="text"
           name="queryTag"

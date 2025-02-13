@@ -29,7 +29,6 @@ function SignupScreen(
 
   async function submitSignup(e) {
     e.preventDefault();
-    // console.log(username, password, confirmPassword);
     const response = await fetch(apiurl + "user", {
       method: "POST",
       mode: "cors",
@@ -52,7 +51,9 @@ function SignupScreen(
   // Render
   return (
     <>
-      <div>Signup Screen</div>
+      <p>Signup</p>
+      <p>New Users must be validated by Admin</p>
+
       <ul>
         {signupErrors.map((err) => {
           return <li key={signupErrors.indexOf(err)}>{err.msg}</li>;

@@ -64,7 +64,7 @@ function GameList(
       <Link to={"new"}>Add New Game</Link>
       <form onSubmit={submitQuery}>
         <p>Search Games</p>
-        <label htmlFor="">Title:</label>
+        <label htmlFor="queryTag">Title:</label>
         <input
           type="text"
           name="queryTag"
@@ -72,10 +72,10 @@ function GameList(
           value={query}
           onChange={handleQuery}
         />
-        <label htmlFor="">Age Recommendation:</label>
+        {/* <label htmlFor="">Age Recommendation:</label>
         <label htmlFor="">Min. Player Count:</label>
         <label htmlFor="">Max. Player Count:</label>
-        <label htmlFor="">Complexity:</label>
+        <label htmlFor="">Complexity:</label> */}
 
         <button>Search</button>
       </form>
@@ -94,9 +94,13 @@ function GameList(
                   <p>
                     {game.playerCtMin} - {game.playerCtMax} players
                   </p>
-                  <p>
-                    {game.timeMin} - {game.timeMax} min.
-                  </p>
+                  {game.timeMax ? (
+                    <p>
+                      {game.timeMin} - {game.timeMax} min.
+                    </p>
+                  ) : (
+                    <p>{game.timeMin} min.</p>
+                  )}
                   <p>{game.gameWeight}</p>
                   {game.inCirc ? <p>Available</p> : <p>Unavailable</p>}
                   <Link to={`/games/${game.id}`}>Detail</Link>

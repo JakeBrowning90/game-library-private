@@ -11,7 +11,7 @@ function AdminOnlyRoute({
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!JSON.parse(localStorage.isAdmin)) {
+    if (localStorage.length == 0 || !JSON.parse(localStorage.isAdmin)) {
       navigate("/");
     }
   }, [children]);
