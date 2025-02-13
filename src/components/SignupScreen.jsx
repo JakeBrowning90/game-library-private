@@ -14,7 +14,6 @@ function SignupScreen(
   const [confirmPassword, setConfirmPassword] = useState("");
 
   // Functions
-
   const navigate = useNavigate();
 
   function handleUsername(e) {

@@ -3,8 +3,6 @@ import { apiurl } from "../apiSource";
 
 function GameForm({
   // Props
-  // loading,
-  // error,
   submitAction,
   submitError,
   title,
@@ -16,7 +14,6 @@ function GameForm({
   timeMax,
   gameWeight,
   inCirc,
-  // tagList,
   checkedTags,
   handleTitle,
   handleDesc,

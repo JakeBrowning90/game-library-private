@@ -94,7 +94,11 @@ function UserDetail(
       ) : (
         <>
           <form onSubmit={editUser}>
-            {/* To-do: Render errors */}
+            <ul>
+              {userSubmitError.map((err) => {
+                return <li key={userSubmitError.indexOf(err)}>{err.msg}</li>;
+              })}
+            </ul>
 
             <label htmlFor="isConfirmed">Confirmed:</label>
             <input

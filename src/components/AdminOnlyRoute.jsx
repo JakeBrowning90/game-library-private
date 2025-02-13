@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { Navigate, useNavigate } from "react-router";
-import { apiurl } from "../apiSource";
+import { useEffect } from "react";
+import { useNavigate } from "react-router";
 
 function AdminOnlyRoute({
   // Props

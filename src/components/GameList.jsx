@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter, Routes, Route, Link, useNavigate } from "react-router";
-
+import { Link } from "react-router";
 import { apiurl } from "../apiSource";
 
 function GameList(
@@ -72,6 +71,7 @@ function GameList(
           value={query}
           onChange={handleQuery}
         />
+        {/* TODO: Add addtl search params */}
         {/* <label htmlFor="">Age Recommendation:</label>
         <label htmlFor="">Min. Player Count:</label>
         <label htmlFor="">Max. Player Count:</label>

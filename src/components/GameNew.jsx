@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { Link, useParams, useNavigate } from "react-router";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router";
 import { apiurl } from "../apiSource";
 import GameForm from "./GameForm";
 

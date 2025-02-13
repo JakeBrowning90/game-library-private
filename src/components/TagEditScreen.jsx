@@ -82,7 +82,6 @@ function TagEditScreen(
       <Link to={"/tags"}>Back</Link>
 
       <p>Manage Tag</p>
-      {/* To-do: Render errors */}
       <form onSubmit={editTag}>
         <ul>
           {tagSubmitError.map((err) => {

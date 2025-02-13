@@ -1,12 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {
-  BrowserRouter,
-  Routes,
-  Route,
-  Link,
-  useNavigate,
-  Outlet,
-} from "react-router";
+import { Link, Outlet } from "react-router";
 import { apiurl } from "../apiSource";
 
 function TagList(
@@ -95,7 +88,6 @@ function TagList(
       <p>Tag List</p>
 
       <form onSubmit={submitNewTag}>
-        {/* Show errors */}
         <ul>
           {tagSubmitError.map((err) => {
             return <li key={tagSubmitError.indexOf(err)}>{err.msg}</li>;
@@ -133,7 +125,6 @@ function TagList(
               return (
                 <li key={tag.id}>
                   <p>{tag.tagName}</p>
-                  {/* Link to edit or delete tag */}
                   <Link to={`/tags/${tag.id}`}>Edit</Link>
                 </li>
               );

@@ -1,4 +1,3 @@
-import { useState } from "react";
 import LoginScreen from "./components/LoginScreen";
 import SignupScreen from "./components/SignupScreen";
 import ProtectedRoute from "./components/ProtectedRoute";
@@ -14,20 +13,15 @@ import GameNew from "./components/GameNew";
 import GameDetail from "./components/GameDetail";
 import ErrorScreen from "./components/ErrorScreen";
 
-import { BrowserRouter, Routes, Route, Link, useNavigate } from "react-router";
+import { Routes, Route, Link, useNavigate } from "react-router";
 
 // import "./App.css";
 
 function App() {
   const navigate = useNavigate();
 
-  const [count, setCount] = useState(0);
-  // TODO: Temp user, replace with fetch results
-  const [currentUser, setCurrentUser] = useState(false);
-
   const logout = () => {
     localStorage.clear();
-    setCurrentUser(false);
     navigate("/login");
   };
 
@@ -134,12 +128,6 @@ function App() {
           <Route path="*" element={<ErrorScreen />} />
         </Routes>
       </main>
-
-      {/* <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-      </div> */}
     </>
   );
 }

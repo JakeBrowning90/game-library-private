@@ -18,7 +18,6 @@ function GameEdit(
   const [playerCtMax, setPlayerCtMax] = useState(0);
   const [gameWeight, setGameWeight] = useState("");
   const [inCirc, setInCirc] = useState(false);
-  // const [tagList, setTagList] = useState([]);
   const [checkedTags, setCheckedTags] = useState([]);
   const [gameSubmitError, setGameSubmitError] = useState([]);
   const [error, setError] = useState(null);
@@ -88,8 +87,7 @@ function GameEdit(
         setTimeMax(response.timeMax || "");
         setGameWeight(response.gameWeight);
         setInCirc(response.inCirc);
-        // setCheckedTags(response.tags);
-        setCheckedTags(response.tags.map(tag => tag.id))
+        setCheckedTags(response.tags.map((tag) => tag.id));
       })
       .catch((error) => setError(error))
       .finally(() => setLoading(false));
@@ -156,7 +154,6 @@ function GameEdit(
         timeMax={timeMax}
         gameWeight={gameWeight}
         inCirc={inCirc}
-        // tagList={tagList}
         checkedTags={checkedTags}
         handleTitle={handleTitle}
         handleDesc={handleDesc}
