@@ -37,20 +37,27 @@ function GameDetail(
   if (error) return <p>Network error, please try again later.</p>;
   return (
     <div className="mainDiv">
-      <Link to={"/games"}>Back</Link>
+      <Link to={"/games"} className="mainLink">
+        Back
+      </Link>
       <h1 className="pageHeader">Game Detail</h1>
       <div className="blueBlock gameDetail">
         <p className="gameTitle">{targetGame.title}</p>
-        <p>{targetGame.ageRec}+ </p>
-        <p>
-          {targetGame.playerCtMin} - {targetGame.playerCtMax} players
-        </p>
-        {targetGame.timeMax ? (
+        <p>Ages {targetGame.ageRec}+ </p>
+        {targetGame.playerCtMax ? (
           <p>
-            Playtime: {targetGame.timeMin} - {targetGame.timeMax} min.
+            {targetGame.playerCtMin} - {targetGame.playerCtMax} players
           </p>
         ) : (
-          <p>Playtime: {targetGame.timeMin} min.</p>
+          <p>{targetGame.playerCtMin} players</p>
+        )}
+
+        {targetGame.timeMax ? (
+          <p>
+            {targetGame.timeMin} - {targetGame.timeMax} min.
+          </p>
+        ) : (
+          <p>{targetGame.timeMin} min.</p>
         )}
         {targetGame.gameWeight == "Easy" && (
           <p className="marker easy">{targetGame.gameWeight}</p>
@@ -61,14 +68,13 @@ function GameDetail(
         {targetGame.gameWeight == "Complex" && (
           <p className="marker complex">{targetGame.gameWeight}</p>
         )}
-
+        {targetGame.inCirc ? (
+          <p className=" available">Available</p>
+        ) : (
+          <p className=" unavailable">Unavailable</p>
+        )}
         <p className="gameCardRow">{targetGame.desc}</p>
 
-        {targetGame.inCirc ? (
-          <p className="gameCardRow">Available</p>
-        ) : (
-          <p className="gameCardRow">Unavailable</p>
-        )}
         {targetGame.tags.length == 0 ? (
           <p className="gameCardRow">No tags applied</p>
         ) : (

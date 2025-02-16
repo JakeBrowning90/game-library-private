@@ -81,7 +81,9 @@ function TagEditScreen(
   if (error) return <p>Network error, please try again later.</p>;
   return (
     <div className="mainDiv">
-      <Link to={"/tags"}>Back</Link>
+      <Link to={"/tags"} className="mainLink">
+        Back
+      </Link>
 
       <h1 className="pageHeader">Manage Tag</h1>
       <form onSubmit={editTag} className="blueBlock">

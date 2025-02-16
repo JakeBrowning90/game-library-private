@@ -94,7 +94,9 @@ function GameNew(
   // Render
   return (
     <div>
-      <Link to={"/games"}>Back</Link>
+      <Link to={"/games"} className="mainLink">
+        Back
+      </Link>
       <h1 className="pageHeader">Add New Game</h1>
       <GameForm
         submitAction={submitNewGame}

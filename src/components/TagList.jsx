@@ -86,7 +86,9 @@ function TagList(
 
   return (
     <div className="mainDiv">
-      <Link to={"/"}>Back</Link>
+      <Link to={"/"} className="mainLink">
+        Back
+      </Link>
 
       <h1 className="pageHeader">Tag List</h1>
 

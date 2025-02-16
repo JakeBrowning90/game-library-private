@@ -83,7 +83,8 @@ h2 {
   font-size: 1.5rem;
 }
 
-.pageHeader {
+.pageHeader,
+.mainLink {
   color: var(--dark-blue);
 }
 
@@ -131,7 +132,8 @@ form {
   border: 2px solid var(--off-white);
 }
 
-.gameLI {
+.gameLI,
+.gameDetail {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
 }
@@ -139,10 +141,12 @@ form {
 .gameTitle {
   grid-column: 1 / -1;
   font-weight: bold;
+  border-bottom: 1px solid var(--off-white);
 }
 
 .gameCardRow {
   grid-column: 1 / -1;
+  border-top: 1px solid var(--off-white);
 }
 
 .tagLI {
@@ -152,7 +156,7 @@ form {
 
 .marker {
   border-radius: 10px;
-  padding: 0 10px;
+  padding: 0 5px;
   margin-right: auto;
 }
 
@@ -176,9 +180,13 @@ form {
   color: white;
 }
 
-.gameDetail {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+.available {
+  font-weight: bold;
+}
+
+.unavailable {
+  font-weight: bold;
+  color: yellow;
 }
 
 fieldset {
@@ -187,4 +195,8 @@ fieldset {
 
 .diffField {
   display: flex;
+}
+
+ul {
+  list-style-type: none;
 }

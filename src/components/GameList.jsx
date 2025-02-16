@@ -59,7 +59,9 @@ function GameList(
 
   return (
     <div className="mainDiv">
-      <Link to={"/"}>Back</Link>
+      <Link to={"/"} className="mainLink">
+        Back
+      </Link>
       <h1 className="pageHeader">Game List</h1>
       <Link to={"new"} className="mainButton blueBlock">
         Add New Game
@@ -94,9 +96,15 @@ function GameList(
                 <li key={game.id} className="blueBlock gameLI">
                   <p className="gameTitle">{game.title}</p>
                   <p>Ages {game.ageRec}+ </p>
-                  <p>
-                    {game.playerCtMin} - {game.playerCtMax} players
-                  </p>
+
+                  {game.playerCtMax ? (
+                    <p>
+                      {game.playerCtMin} - {game.playerCtMax} players
+                    </p>
+                  ) : (
+                    <p>{game.playerCtMin} players</p>
+                  )}
+
                   {game.timeMax ? (
                     <p>
                       {game.timeMin} - {game.timeMax} min.
@@ -114,7 +122,11 @@ function GameList(
                     <p className="marker complex">{game.gameWeight}</p>
                   )}
 
-                  {game.inCirc ? <p>Available</p> : <p>Unavailable</p>}
+                  {game.inCirc ? (
+                    <p className="available">Available</p>
+                  ) : (
+                    <p className="unavailable">Unavailable</p>
+                  )}
                   <Link to={`/games/${game.id}`}>Detail</Link>
                 </li>
               );

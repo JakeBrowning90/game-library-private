@@ -82,7 +82,7 @@ function GameEdit(
         setDesc(response.desc);
         setAgeRec(response.ageRec);
         setPlayerCtMin(response.playerCtMin);
-        setPlayerCtMax(response.playerCtMax);
+        setPlayerCtMax(response.playerCtMax || "");
         setTimeMin(response.timeMin);
         setTimeMax(response.timeMax || "");
         setGameWeight(response.gameWeight);
@@ -140,7 +140,9 @@ function GameEdit(
   if (error) return <p>Network error, please try again later.</p>;
   return (
     <div className="mainDiv">
-      <Link to={`/games/${gameId}`}>Back</Link>
+      <Link to={`/games/${gameId}`} className="mainLink">
+        Back
+      </Link>
       <h1 className="pageHeader">Edit Game</h1>
       <GameForm
         submitAction={submitGameEdit}
