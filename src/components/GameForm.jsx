@@ -3,6 +3,7 @@ import { apiurl } from "../apiSource";
 
 function GameForm({
   // Props
+  formHeader,
   submitAction,
   submitError,
   title,
@@ -56,69 +57,93 @@ function GameForm({
   if (error) return <p>Network error, please try again later.</p>;
 
   return (
-    <form onSubmit={submitAction} className="blueBlock">
-      <ul>
+    <form onSubmit={submitAction} className="blueBlock gameForm">
+      {formHeader && <h2 className="gameFormRow">{formHeader}</h2>}
+      <ul className="gameFormRow">
         {submitError.map((err) => {
           return <li key={submitError.indexOf(err)}>{err.msg}</li>;
         })}
       </ul>
-      <label htmlFor="title">Title:</label>
-      <input
-        type="text"
-        name="title"
-        id="title"
-        value={title}
-        onChange={handleTitle}
-      />
-      <label htmlFor="desc">Description:</label>
-      <input
-        type="textarea"
-        name="desc"
-        id="desc"
-        value={desc}
-        onChange={handleDesc}
-      />
-      <label htmlFor="ageRec">Min. Age:</label>
-      <input
-        type="number"
-        name="ageRec"
-        id="ageRec"
-        value={ageRec}
-        onChange={handleAgeRec}
-      />
-      <label htmlFor="playerCtMin">Player Min:</label>
-      <input
-        type="number"
-        name="playerCtMin"
-        id="playerCtMin"
-        value={playerCtMin}
-        onChange={handlePlayerCtMin}
-      />
-      <label htmlFor="playerCtMax">Player Max:</label>
-      <input
-        type="number"
-        name="playerCtMax"
-        id="playerCtMax"
-        value={playerCtMax}
-        onChange={handlePlayerCtMax}
-      />
-      <label htmlFor="timeMin">Time Min:</label>
-      <input
-        type="number"
-        name="timeMin"
-        id="timeMin"
-        value={timeMin}
-        onChange={handleTimeMin}
-      />
-      <label htmlFor="timeMax">Time Max:</label>
-      <input
-        type="number"
-        name="timeMax"
-        id="timeMax"
-        value={timeMax}
-        onChange={handleTimeMax}
-      />
-      <fieldset className="diffField">
+
+      <div className="gameFormRow gameFormCell">
+        <label htmlFor="title">Title*:</label>
+        <input
+          type="text"
+          name="title"
+          id="title"
+          value={title}
+          onChange={handleTitle}
+          
+        />
+      </div>
+
+      <div className="gameFormRow gameFormCell">
+        <label htmlFor="desc">Description*:</label>
+        <input
+          type="textarea"
+          name="desc"
+          id="desc"
+          value={desc}
+          onChange={handleDesc}
+          
+        />
+      </div>
+      <div className="gameFormCell gameFormRow">
+        <label htmlFor="ageRec">Min. Age*:</label>
+        <input
+          type="number"
+          name="ageRec"
+          id="ageRec"
+          value={ageRec}
+          onChange={handleAgeRec}
+        />
+      </div>
+      <div className="gameFormCell">
+        <label htmlFor="playerCtMin">Player Min*:</label>
+        <input
+          type="number"
+          name="playerCtMin"
+          id="playerCtMin"
+          value={playerCtMin}
+          onChange={handlePlayerCtMin}
+          
+        />
+      </div>
+
+      <div className="gameFormCell">
+        <label htmlFor="playerCtMax">Player Max:</label>
+        <input
+          type="number"
+          name="playerCtMax"
+          id="playerCtMax"
+          value={playerCtMax}
+          onChange={handlePlayerCtMax}
+        />
+      </div>
+      <div className="gameFormCell">
+        <label htmlFor="timeMin">Time Min*:</label>
+        <input
+          type="number"
+          name="timeMin"
+          id="timeMin"
+          value={timeMin}
+          onChange={handleTimeMin}
+          
+        />
+      </div>
+
+      <div className="gameFormCell">
+        <label htmlFor="timeMax">Time Max:</label>
+        <input
+          type="number"
+          name="timeMax"
+          id="timeMax"
+          value={timeMax}
+          onChange={handleTimeMax}
+        />
+      </div>
+
+      <fieldset className="diffField gameFormRow">
         <legend>Difficulty:</legend>
         <div className="marker easy toggleSet">
           <input
@@ -154,7 +179,7 @@ function GameForm({
           <label htmlFor="gameWeight3">Complex</label>
         </div>
       </fieldset>
-      <div className="toggleSet">
+      <div className="toggleSet gameFormRow">
         <label htmlFor="inCirc">In Circulation:</label>
         <input
           type="checkbox"
@@ -165,7 +190,7 @@ function GameForm({
         />
       </div>
 
-      <fieldset htmlFor="">
+      <fieldset htmlFor="" className="gameFormRow">
         <legend>Tags</legend>
         {tagList.map((tag) => {
           return (
@@ -183,7 +208,7 @@ function GameForm({
           );
         })}
       </fieldset>
-      <button>Submit</button>
+      <button className="gameFormRow">Submit</button>
     </form>
   );
 }

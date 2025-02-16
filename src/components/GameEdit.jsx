@@ -143,8 +143,9 @@ function GameEdit(
       <Link to={`/games/${gameId}`} className="mainLink">
         Back
       </Link>
-      <h1 className="pageHeader">Edit Game</h1>
+      <h1 className="pageHeader">Manage Game</h1>
       <GameForm
+        formHeader="Edit Game"
         submitAction={submitGameEdit}
         submitError={gameSubmitError}
         title={title}

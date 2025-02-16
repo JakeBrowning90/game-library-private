@@ -110,7 +110,8 @@ main {
 }
 
 .mainDiv,
-ul {
+ul,
+.gameFormCell {
   display: flex;
   flex-direction: column;
   gap: 5px;
@@ -123,6 +124,16 @@ ul {
 form {
   display: flex;
   flex-direction: column;
+}
+
+.gameForm {
+  display: grid;
+  grid-template-columns: minmax(0, 50%) 50%;
+}
+
+.gameFormRow {
+  grid-column: 1/-1;
+  width: auto;
 }
 
 .blueBlock {
