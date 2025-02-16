@@ -102,22 +102,27 @@ function UserDetail(
               })}
             </ul>
             <h2>Permissions:</h2>
-            <label htmlFor="isConfirmed">Confirmed:</label>
-            <input
-              type="checkbox"
-              name="isConfirmed"
-              id="isConfirmed"
-              checked={isConfirmed}
-              onChange={handleIsConfirmed}
-            />
-            <label htmlFor="isAdmin">Admin:</label>
-            <input
-              type="checkbox"
-              name="isAdmin"
-              id="isAdmin"
-              checked={isAdmin}
-              onChange={handleIsAdmin}
-            />
+            <div className="toggleSet">
+              <label htmlFor="isConfirmed">Confirmed:</label>
+              <input
+                type="checkbox"
+                name="isConfirmed"
+                id="isConfirmed"
+                checked={isConfirmed}
+                onChange={handleIsConfirmed}
+              />
+            </div>
+            <div className="toggleSet">
+              <label htmlFor="isAdmin">Admin:</label>
+              <input
+                type="checkbox"
+                name="isAdmin"
+                id="isAdmin"
+                checked={isAdmin}
+                onChange={handleIsAdmin}
+              />
+            </div>
+
             <button>Save changes</button>
           </form>
           <form onSubmit={deleteUser} className="blueBlock">

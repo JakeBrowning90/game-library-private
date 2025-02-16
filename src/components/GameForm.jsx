@@ -118,50 +118,58 @@ function GameForm({
         value={timeMax}
         onChange={handleTimeMax}
       />
-      <fieldset>
+      <fieldset className="diffField">
         <legend>Difficulty:</legend>
-        <label htmlFor="gameWeight1">Easy:</label>
-        <input
-          type="radio"
-          name="gameWeight"
-          id="gameWeight1"
-          value="Easy"
-          onChange={handleGameWeight}
-          defaultChecked={gameWeight === "Easy"}
-        />
-        <label htmlFor="gameWeight2">Medium:</label>
-        <input
-          type="radio"
-          name="gameWeight"
-          id="gameWeight2"
-          value="Medium"
-          onChange={handleGameWeight}
-          defaultChecked={gameWeight === "Medium"}
-        />
-        <label htmlFor="gameWeight3">Complex:</label>
-        <input
-          type="radio"
-          name="gameWeight"
-          id="gameWeight3"
-          value="Complex"
-          onChange={handleGameWeight}
-          defaultChecked={gameWeight === "Complex"}
-        />
+        <div className="marker easy toggleSet">
+          <input
+            type="radio"
+            name="gameWeight"
+            id="gameWeight1"
+            value="Easy"
+            onChange={handleGameWeight}
+            defaultChecked={gameWeight === "Easy"}
+          />
+          <label htmlFor="gameWeight1">Easy</label>
+        </div>
+        <div className="marker medium toggleSet">
+          <input
+            type="radio"
+            name="gameWeight"
+            id="gameWeight2"
+            value="Medium"
+            onChange={handleGameWeight}
+            defaultChecked={gameWeight === "Medium"}
+          />
+          <label htmlFor="gameWeight2">Medium</label>
+        </div>
+        <div className="marker complex toggleSet">
+          <input
+            type="radio"
+            name="gameWeight"
+            id="gameWeight3"
+            value="Complex"
+            onChange={handleGameWeight}
+            defaultChecked={gameWeight === "Complex"}
+          />
+          <label htmlFor="gameWeight3">Complex</label>
+        </div>
       </fieldset>
+      <div className="toggleSet">
+        <label htmlFor="inCirc">In Circulation:</label>
+        <input
+          type="checkbox"
+          name="inCirc"
+          id="inCirc"
+          checked={inCirc}
+          onChange={handleInCirc}
+        />
+      </div>
 
-      <label htmlFor="inCirc">In Circulation:</label>
-      <input
-        type="checkbox"
-        name="inCirc"
-        id="inCirc"
-        checked={inCirc}
-        onChange={handleInCirc}
-      />
       <fieldset htmlFor="">
         <legend>Tags</legend>
         {tagList.map((tag) => {
           return (
-            <div key={tag.id}>
+            <div key={tag.id} className="toggleSet">
               <input
                 type="checkbox"
                 name={"checkbox" + tag.id}

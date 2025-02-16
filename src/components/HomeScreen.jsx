@@ -12,7 +12,7 @@ function HomeScreen(
   return (
     <>
       <div className="mainDiv">
-        <h1 className="pageHeader">Home Screen</h1>
+        <h1 className="pageHeader">Home</h1>
         <Link to="/games" className="mainButton blueBlock">
           Manage Games
         </Link>

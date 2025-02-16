@@ -53,13 +53,13 @@ function GameDetail(
           <p>Playtime: {targetGame.timeMin} min.</p>
         )}
         {targetGame.gameWeight == "Easy" && (
-          <p className="easy">{targetGame.gameWeight}</p>
+          <p className="marker easy">{targetGame.gameWeight}</p>
         )}
         {targetGame.gameWeight == "Medium" && (
-          <p className="medium">{targetGame.gameWeight}</p>
+          <p className="marker medium">{targetGame.gameWeight}</p>
         )}
         {targetGame.gameWeight == "Complex" && (
-          <p className="complex">{targetGame.gameWeight}</p>
+          <p className="marker complex">{targetGame.gameWeight}</p>
         )}
 
         <p className="gameCardRow">{targetGame.desc}</p>

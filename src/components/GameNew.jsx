@@ -95,7 +95,7 @@ function GameNew(
   return (
     <div>
       <Link to={"/games"}>Back</Link>
-      <p>Add New Game</p>
+      <h1 className="pageHeader">Add New Game</h1>
       <GameForm
         submitAction={submitNewGame}
         submitError={gameSubmitError}

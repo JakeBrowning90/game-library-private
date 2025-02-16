@@ -36,8 +36,8 @@ function UserList(
 
   return (
     <div className="mainDiv">
+      <Link to={"/"}>Back</Link>
       <h1 className="pageHeader">User List</h1>
-
       <form className="blueBlock">
         {" "}
         <p>To-do: Search Bar</p>

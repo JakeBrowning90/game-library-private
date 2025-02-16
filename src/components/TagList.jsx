@@ -86,6 +86,8 @@ function TagList(
 
   return (
     <div className="mainDiv">
+      <Link to={"/"}>Back</Link>
+
       <h1 className="pageHeader">Tag List</h1>
 
       <form onSubmit={submitNewTag} className="blueBlock">

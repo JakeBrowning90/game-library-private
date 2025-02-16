@@ -59,8 +59,8 @@ function GameList(
 
   return (
     <div className="mainDiv">
+      <Link to={"/"}>Back</Link>
       <h1 className="pageHeader">Game List</h1>
-
       <Link to={"new"} className="mainButton blueBlock">
         Add New Game
       </Link>
@@ -105,13 +105,13 @@ function GameList(
                     <p>{game.timeMin} min.</p>
                   )}
                   {game.gameWeight == "Easy" && (
-                    <p className="easy">{game.gameWeight}</p>
+                    <p className="marker easy">{game.gameWeight}</p>
                   )}
                   {game.gameWeight == "Medium" && (
-                    <p className="medium">{game.gameWeight}</p>
+                    <p className="marker medium">{game.gameWeight}</p>
                   )}
                   {game.gameWeight == "Complex" && (
-                    <p className="complex">{game.gameWeight}</p>
+                    <p className="marker complex">{game.gameWeight}</p>
                   )}
 
                   {game.inCirc ? <p>Available</p> : <p>Unavailable</p>}
