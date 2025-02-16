@@ -46,6 +46,7 @@ function TagEditScreen(
       mode: "cors",
       headers: {
         "Content-Type": "application/json",
+        authorization: localStorage.getItem("token"),
       },
       body: JSON.stringify({
         tagName: targetTag,
@@ -66,6 +67,7 @@ function TagEditScreen(
       mode: "cors",
       headers: {
         "Content-Type": "application/json",
+        authorization: localStorage.getItem("token"),
       },
       body: JSON.stringify({
         tagName: targetTag,

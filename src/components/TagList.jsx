@@ -66,6 +66,7 @@ function TagList(
       mode: "cors",
       headers: {
         "Content-Type": "application/json",
+        authorization: localStorage.getItem("token"),
       },
       body: JSON.stringify({
         tagName: newTag,

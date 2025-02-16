@@ -55,6 +55,7 @@ function UserDetail(
       mode: "cors",
       headers: {
         "Content-Type": "application/json",
+        authorization: localStorage.getItem("token"),
       },
       body: JSON.stringify({
         isAdmin: isAdmin,
@@ -76,6 +77,7 @@ function UserDetail(
       mode: "cors",
       headers: {
         "Content-Type": "application/json",
+        authorization: localStorage.getItem("token"),
       },
     });
     navigate("/users");

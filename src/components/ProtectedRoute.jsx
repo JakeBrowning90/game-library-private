@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
 import { apiurl } from "../apiSource";
 
@@ -7,6 +7,9 @@ function ProtectedRoute({
   children,
 }) {
   // State declarations
+  const [verifying, setVerifying] = useState(true);
+  const [error, setError] = useState(null);
+
   // Functions
   const navigate = useNavigate();
 
@@ -17,20 +20,23 @@ function ProtectedRoute({
       headers: {
         "Content-Type": "application/json",
         authorization: localStorage.getItem("token"),
+        confirmation: localStorage.getItem("isConfirmed"),
       },
-    }).then((response) => {
-      if (response.status != 200) {
-        localStorage.clear();
-        navigate("/login");
-      }
-      if (localStorage.length == 0 || !JSON.parse(localStorage.isConfirmed)) {
-        localStorage.clear();
-        navigate("/login");
-      }
-    });
+    })
+      .then((response) => {
+        if (response.status == 401) {
+          localStorage.clear();
+          navigate("/login");
+        } else {
+          return response.json();
+        }
+      })
+      .then(setVerifying(false));
   }, [children]);
 
   // Render
+  if (verifying) return <p>Verifying...</p>;
+
   return children;
 }
 

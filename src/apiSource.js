@@ -1,5 +1,4 @@
-const apiurl = "http://localhost:3000/"
-// TODO: Live API host below
-// const apiurl = "";
+// const apiurl = "http://localhost:3000/"
+const apiurl = "https://game-library-api.fly.dev/";
 
 export { apiurl };
