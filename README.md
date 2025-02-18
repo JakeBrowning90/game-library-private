@@ -12,7 +12,6 @@ React, React Router (TBA)
 -Collapsable forms
 -Correct "Authentication" render on Protected Routes
 -Paginate search results
--Implement user search
 -Additional search filters for game search
 
 ## How to use

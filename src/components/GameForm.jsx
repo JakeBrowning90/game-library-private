@@ -59,11 +59,14 @@ function GameForm({
   return (
     <form onSubmit={submitAction} className="blueBlock gameForm">
       {formHeader && <h2 className="gameFormRow">{formHeader}</h2>}
-      <ul className="gameFormRow">
-        {submitError.map((err) => {
-          return <li key={submitError.indexOf(err)}>{err.msg}</li>;
-        })}
-      </ul>
+
+      {submitError.length > 0 && (
+        <ul className="gameFormRow">
+          {submitError.map((err) => {
+            return <li key={submitError.indexOf(err)}>{err.msg}</li>;
+          })}
+        </ul>
+      )}
 
       <div className="gameFormRow gameFormCell">
         <label htmlFor="title">Title*:</label>
@@ -73,7 +76,6 @@ function GameForm({
           id="title"
           value={title}
           onChange={handleTitle}
-          
         />
       </div>
 
@@ -85,7 +87,6 @@ function GameForm({
           id="desc"
           value={desc}
           onChange={handleDesc}
-          
         />
       </div>
       <div className="gameFormCell gameFormRow">
@@ -106,7 +107,6 @@ function GameForm({
           id="playerCtMin"
           value={playerCtMin}
           onChange={handlePlayerCtMin}
-          
         />
       </div>
 
@@ -128,7 +128,6 @@ function GameForm({
           id="timeMin"
           value={timeMin}
           onChange={handleTimeMin}
-          
         />
       </div>
 
@@ -208,6 +207,9 @@ function GameForm({
           );
         })}
       </fieldset>
+      {submitError.length > 0 && (
+        <p className="gameFormRow">Review form errors.</p>
+      )}
       <button className="gameFormRow">Submit</button>
     </form>
   );

@@ -13,9 +13,9 @@ function GameNew(
   const [desc, setDesc] = useState("");
   const [ageRec, setAgeRec] = useState(0);
   const [timeMin, setTimeMin] = useState(0);
-  const [timeMax, setTimeMax] = useState(0);
+  const [timeMax, setTimeMax] = useState("");
   const [playerCtMin, setPlayerCtMin] = useState(0);
-  const [playerCtMax, setPlayerCtMax] = useState(0);
+  const [playerCtMax, setPlayerCtMax] = useState("");
   const [gameWeight, setGameWeight] = useState("");
   const [inCirc, setInCirc] = useState(false);
   const [checkedTags, setCheckedTags] = useState([]);
