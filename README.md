@@ -12,6 +12,8 @@ React, React Router (TBA)
 -Paginate search results
 -Additional search filters for game search
 -Form input limits and backend validation
+-Change API source to .env value
+-recolor button element
 
 ## How to use
 TBA
