@@ -54,11 +54,18 @@ function SignupScreen(
         <h1>Signup</h1>
         <p>New Users must be validated by Admin</p>
 
-        <ul>
-          {signupErrors.map((err) => {
-            return <li key={signupErrors.indexOf(err)}>{err.msg}</li>;
-          })}
-        </ul>
+        {signupErrors.length > 0 && (
+          <ul>
+            {signupErrors.map((err) => {
+              return (
+                <li key={signupErrors.indexOf(err)} className="errText">
+                  {err.msg}
+                </li>
+              );
+            })}
+          </ul>
+        )}
+
         <label htmlFor="username">Username:</label>
         <input
           type="text"

@@ -94,11 +94,15 @@ function TagList(
 
       <form onSubmit={submitNewTag} className="blueBlock">
         <label htmlFor="newTag">Create New Tag:</label>
-        <ul>
-          {tagSubmitError.map((err) => {
-            return <li key={tagSubmitError.indexOf(err)}>{err.msg}</li>;
-          })}
-        </ul>
+
+        {tagSubmitError.length > 0 && (
+          <ul>
+            {tagSubmitError.map((err) => {
+              return <li key={tagSubmitError.indexOf(err)}>{err.msg}</li>;
+            })}
+          </ul>
+        )}
+
         <input
           type="text"
           name="newTag"

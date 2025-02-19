@@ -2,6 +2,7 @@
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   --dark-blue: #0d203b;
   --off-white: #fff;
+  --error-text: pink;
   color: var(--off-white);
 }
 
@@ -210,4 +211,8 @@ fieldset {
 
 ul {
   list-style-type: none;
+}
+
+.errText {
+  color: var(--error-text);
 }

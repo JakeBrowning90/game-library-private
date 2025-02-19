@@ -11,6 +11,7 @@ React, React Router (TBA)
 -Collapsable forms
 -Paginate search results
 -Additional search filters for game search
+-Form input limits and backend validation
 
 ## How to use
 TBA

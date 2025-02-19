@@ -59,7 +59,9 @@ function UserList(
 
   return (
     <div className="mainDiv">
-      <Link to={"/"}>Back</Link>
+      <Link to={"/"} className="mainLink">
+        Back
+      </Link>
       <h1 className="pageHeader">User List</h1>
       <form onSubmit={submitQuery} className="blueBlock">
         <label htmlFor="queryTag">Search Users:</label>

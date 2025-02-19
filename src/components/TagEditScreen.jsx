@@ -87,11 +87,18 @@ function TagEditScreen(
 
       <h1 className="pageHeader">Manage Tag</h1>
       <form onSubmit={editTag} className="blueBlock">
-        <ul>
-          {tagSubmitError.map((err) => {
-            return <li key={tagSubmitError.indexOf(err)}>{err.msg}</li>;
-          })}
-        </ul>
+        {tagSubmitError.length > 0 && (
+          <ul>
+            {tagSubmitError.map((err) => {
+              return (
+                <li key={tagSubmitError.indexOf(err)} className="errText">
+                  {err.msg}
+                </li>
+              );
+            })}
+          </ul>
+        )}
+
         <h2>Edit Tag Name</h2>
         <label htmlFor="targetTag">Tag Name:</label>
         <input

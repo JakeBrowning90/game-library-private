@@ -63,7 +63,11 @@ function GameForm({
       {submitError.length > 0 && (
         <ul className="gameFormRow">
           {submitError.map((err) => {
-            return <li key={submitError.indexOf(err)}>{err.msg}</li>;
+            return (
+              <li key={submitError.indexOf(err)} className="errText">
+                {err.msg}
+              </li>
+            );
           })}
         </ul>
       )}
@@ -208,7 +212,7 @@ function GameForm({
         })}
       </fieldset>
       {submitError.length > 0 && (
-        <p className="gameFormRow">Review form errors.</p>
+        <p className="gameFormRow errText">Review form errors.</p>
       )}
       <button className="gameFormRow">Submit</button>
     </form>

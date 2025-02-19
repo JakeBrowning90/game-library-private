@@ -55,7 +55,7 @@ function LoginScreen(
     <>
       <form className="blueBlock" onSubmit={submitLogin}>
         <h1>Login</h1>
-        {invalidLogin && <p>Invalid login</p>}
+        {invalidLogin && <p className="errText">Invalid login</p>}
         <label htmlFor="username">Username:</label>
         <input
           type="text"

@@ -88,7 +88,9 @@ function UserDetail(
   if (error) return <p>Network error, please try again later.</p>;
   return (
     <div className="mainDiv">
-      <Link to={"/users"}>Back</Link>
+      <Link to={"/users"} className="mainLink">
+        Back
+      </Link>
       <h1 className="pageHeader">User Detail:</h1>
       <h2 className="pageHeader">{targetUser.username}</h2>
       {JSON.parse(localStorage.id) == JSON.parse(targetUser.id) ? (
@@ -96,11 +98,18 @@ function UserDetail(
       ) : (
         <>
           <form onSubmit={editUser} className="blueBlock">
-            <ul>
-              {userSubmitError.map((err) => {
-                return <li key={userSubmitError.indexOf(err)}>{err.msg}</li>;
-              })}
-            </ul>
+            {userSubmitError.length > 0 && (
+              <ul>
+                {userSubmitError.map((err) => {
+                  return (
+                    <li key={userSubmitError.indexOf(err)} className="errText">
+                      {err.msg}
+                    </li>
+                  );
+                })}
+              </ul>
+            )}
+
             <h2>Permissions:</h2>
             <div className="toggleSet">
               <label htmlFor="isConfirmed">Confirmed:</label>
