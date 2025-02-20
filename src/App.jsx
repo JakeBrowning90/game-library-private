@@ -15,8 +15,6 @@ import ErrorScreen from "./components/ErrorScreen";
 
 import { Routes, Route, Link, useNavigate } from "react-router";
 
-// import "./App.css";
-
 function App() {
   const navigate = useNavigate();
 
