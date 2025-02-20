@@ -71,6 +71,7 @@ function LoginScreen(
           onChange={handlePassword}
         />
         <button>Submit</button>
+        <a href="https://game-library-public.fly.dev/">Public App</a>
       </form>
     </>
   );
