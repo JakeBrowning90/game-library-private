@@ -122,9 +122,16 @@ ul,
   border-radius: 20px;
 }
 
-form {
+form,
+.formBody {
   display: flex;
   flex-direction: column;
+}
+
+.formHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .gameForm {

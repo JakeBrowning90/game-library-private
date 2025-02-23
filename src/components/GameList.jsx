@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router";
 import { apiurl } from "../apiSource";
+import downArrow from "../assets/arrowdown.svg";
 
 function GameList(
   {
@@ -53,6 +54,10 @@ function GameList(
       .then((response) => setGameList(response));
   }
 
+  const toggleFormBody = () => {
+    console.log("Clicked!")
+  }
+
   // Render
   if (loading) return <p>Loading game list...</p>;
   if (error) return <p>Network error, please try again later.</p>;
@@ -67,22 +72,27 @@ function GameList(
         Add New Game
       </Link>
       <form onSubmit={submitQuery} className="blueBlock">
-        <p>Search Games</p>
-        <label htmlFor="queryTag">Title:</label>
-        <input
-          type="text"
-          name="queryTag"
-          id="queryTag"
-          value={query}
-          onChange={handleQuery}
-        />
-        {/* TODO: Add addtl search params */}
-        {/* <label htmlFor="">Age Recommendation:</label>
+        <div className="formHeader">
+          <p>Search Games</p>
+          <img src={downArrow} alt="" onClick={toggleFormBody} />
+        </div>
+        <div className="formBody">
+          <label htmlFor="queryTag">Title:</label>
+          <input
+            type="text"
+            name="queryTag"
+            id="queryTag"
+            value={query}
+            onChange={handleQuery}
+          />
+          {/* TODO: Add addtl search params */}
+          {/* <label htmlFor="">Age Recommendation:</label>
         <label htmlFor="">Min. Player Count:</label>
         <label htmlFor="">Max. Player Count:</label>
         <label htmlFor="">Complexity:</label> */}
 
-        <button>Search</button>
+          <button>Search</button>
+        </div>
       </form>
 
       {gameList.length == 0 ? (
