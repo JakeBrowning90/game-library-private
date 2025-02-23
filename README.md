@@ -1,7 +1,8 @@
 # Game Library - Private Frontend
 
 ## Overview
-TBA
+Public Frontend Repo: https://github.com/JakeBrowning90/game-library-public
+API Repo: https://github.com/JakeBrowning90/game-library-api
 
 ## Technologies
 React, React Router (TBA)
