@@ -8,7 +8,7 @@ API Repo: https://github.com/JakeBrowning90/game-library-api
 React, React Router (TBA)
 
 ## Challenges/To-dos
--CSV upload
+-Update DB with CSV upload including array of tag selections
 -Placeholder form fields
 -Collapsable forms
 -Paginate search results
