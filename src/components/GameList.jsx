@@ -10,6 +10,7 @@ function GameList(
 ) {
   // State declarations
   const [query, setQuery] = useState("");
+  const [qGameWeight, setQGameWeight] = useState("");
   const [gameList, setGameList] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -37,9 +38,13 @@ function GameList(
     setQuery(e.target.value);
   };
 
+    const handleQGameWeight = (e) => {
+    setQGameWeight(e.target.value);
+  };
+
   async function submitQuery(e) {
     e.preventDefault();
-    await fetch(apiurl + `game/?title=${query}`, {
+    await fetch(apiurl + `game/?title=${query}&weight=${qGameWeight}`, {
       mode: "cors",
       headers: {
         "Content-Type": "application/json",
@@ -55,8 +60,8 @@ function GameList(
   }
 
   const toggleFormBody = () => {
-    console.log("Clicked!")
-  }
+    console.log("Clicked!");
+  };
 
   // Render
   if (loading) return <p>Loading game list...</p>;
@@ -90,7 +95,54 @@ function GameList(
         <label htmlFor="">Min. Player Count:</label>
         <label htmlFor="">Max. Player Count:</label>
         <label htmlFor="">Complexity:</label> */}
+          <fieldset className="diffField gameFormRow">
+            <legend>Difficulty:</legend>
+            <div className="marker toggleSet">
+              <input
+                type="radio"
+                name="gameWeight"
+                id="gameWeight1"
+                value=""
+                onChange={handleQGameWeight}
+                defaultChecked={qGameWeight === ""}
+              />
+              <label htmlFor="gameWeight1">All</label>
+            </div>
 
+            <div className="marker easy toggleSet">
+              <input
+                type="radio"
+                name="gameWeight"
+                id="gameWeight1"
+                value="Easy"
+                onChange={handleQGameWeight}
+                defaultChecked={qGameWeight === "Easy"}
+              />
+              <label htmlFor="gameWeight1">Easy</label>
+            </div>
+            <div className="marker medium toggleSet">
+              <input
+                type="radio"
+                name="gameWeight"
+                id="gameWeight2"
+                value="Medium"
+                onChange={handleQGameWeight}
+                defaultChecked={qGameWeight === "Medium"}
+              />
+              <label htmlFor="gameWeight2">Medium</label>
+            </div>
+            <div className="marker complex toggleSet">
+              <input
+                type="radio"
+                name="gameWeight"
+                id="gameWeight3"
+                value="Complex"
+                onChange={handleQGameWeight}
+                defaultChecked={qGameWeight === "Complex"}
+              />
+              <label htmlFor="gameWeight3">Complex</label>
+            </div>
+          </fieldset>
           <button>Search</button>
         </div>
       </form>
