@@ -9,8 +9,9 @@ function GameList(
   }
 ) {
   // State declarations
-  const [query, setQuery] = useState("");
+  const [qTitle, setQTitle] = useState("");
   const [qGameWeight, setQGameWeight] = useState("");
+  const [qCount, setQCount] = useState("");
   const [gameList, setGameList] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -34,22 +35,29 @@ function GameList(
       .finally(() => setLoading(false));
   }, []);
 
-  const handleQuery = (e) => {
-    setQuery(e.target.value);
+  const handleQTitle = (e) => {
+    setQTitle(e.target.value);
   };
 
-    const handleQGameWeight = (e) => {
+  const handleQGameWeight = (e) => {
     setQGameWeight(e.target.value);
+  };
+
+  const handleQCount = (e) => {
+    setQCount(e.target.value);
   };
 
   async function submitQuery(e) {
     e.preventDefault();
-    await fetch(apiurl + `game/?title=${query}&weight=${qGameWeight}`, {
-      mode: "cors",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
+    await fetch(
+      apiurl + `game/?title=${qTitle}&weight=${qGameWeight}&count=${qCount}`,
+      {
+        mode: "cors",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    )
       .then((response) => {
         if (response.status >= 400) {
           throw new Error("Game list fetch error");
@@ -82,22 +90,32 @@ function GameList(
           <img src={downArrow} alt="" onClick={toggleFormBody} />
         </div>
         <div className="formBody">
-          <label htmlFor="queryTag">Title:</label>
+          <label htmlFor="qTitle">Title:</label>
           <input
             type="text"
-            name="queryTag"
-            id="queryTag"
-            value={query}
-            onChange={handleQuery}
+            name="qTitle"
+            id="qTitle"
+            value={qTitle}
+            onChange={handleQTitle}
           />
           {/* TODO: Add addtl search params */}
           {/* <label htmlFor="">Age Recommendation:</label>
         <label htmlFor="">Min. Player Count:</label>
         <label htmlFor="">Max. Player Count:</label>
         <label htmlFor="">Complexity:</label> */}
+
+          <p>Advanced Search</p>
+          <label htmlFor="qPlayerCt">Player count:</label>
+          <input
+            type="number"
+            name="qPlayerCt"
+            id="qPlayerCt"
+            value={qCount}
+            onChange={handleQCount}
+          />
           <fieldset className="diffField gameFormRow">
             <legend>Difficulty:</legend>
-            <div className="marker toggleSet">
+            <div className="marker allRadio toggleSet">
               <input
                 type="radio"
                 name="gameWeight"

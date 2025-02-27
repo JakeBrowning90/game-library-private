@@ -184,6 +184,11 @@ form,
   gap: 5px;
 }
 
+.allRadio {
+  background-color: var(--off-white);
+  color: black;
+}
+
 .easy {
   background-color: green;
   color: white;

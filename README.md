@@ -11,6 +11,7 @@ React, React Router (TBA)
 -Update DB with CSV upload including array of tag selections
 -Placeholder form fields
 -Collapsable forms
+-Lock top of game list screen
 -Paginate search results
 -Additional search filters for game search
 -Form input limits and backend validation
