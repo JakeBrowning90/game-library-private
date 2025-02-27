@@ -47,6 +47,12 @@ function GameList(
     setQCount(e.target.value);
   };
 
+  const toggleAdvForm = () => {
+    const advSearch = document.querySelector(".advSearch");
+    advSearch.classList.toggle("hidden");
+    // TODO: toggle icon
+  };
+
   async function submitQuery(e) {
     e.preventDefault();
     await fetch(
@@ -67,10 +73,6 @@ function GameList(
       .then((response) => setGameList(response));
   }
 
-  const toggleFormBody = () => {
-    console.log("Clicked!");
-  };
-
   // Render
   if (loading) return <p>Loading game list...</p>;
   if (error) return <p>Network error, please try again later.</p>;
@@ -87,7 +89,7 @@ function GameList(
       <form onSubmit={submitQuery} className="blueBlock">
         <div className="formHeader">
           <p>Search Games</p>
-          <img src={downArrow} alt="" onClick={toggleFormBody} />
+          <img src={downArrow} alt="" onClick={toggleAdvForm} />
         </div>
         <div className="formBody">
           <label htmlFor="qTitle">Title:</label>
@@ -103,64 +105,65 @@ function GameList(
         <label htmlFor="">Min. Player Count:</label>
         <label htmlFor="">Max. Player Count:</label>
         <label htmlFor="">Complexity:</label> */}
+          <div className="formBody advSearch hidden">
+            <p>Advanced Search</p>
+            <label htmlFor="qPlayerCt">Player count:</label>
+            <input
+              type="number"
+              name="qPlayerCt"
+              id="qPlayerCt"
+              value={qCount}
+              onChange={handleQCount}
+            />
+            <fieldset className="diffField searchDiff">
+              <legend>Difficulty:</legend>
+              <div className="marker allRadio toggleSet">
+                <input
+                  type="radio"
+                  name="gameWeight"
+                  id="gameWeight1"
+                  value=""
+                  onChange={handleQGameWeight}
+                  defaultChecked={qGameWeight === ""}
+                />
+                <label htmlFor="gameWeight1">All</label>
+              </div>
 
-          <p>Advanced Search</p>
-          <label htmlFor="qPlayerCt">Player count:</label>
-          <input
-            type="number"
-            name="qPlayerCt"
-            id="qPlayerCt"
-            value={qCount}
-            onChange={handleQCount}
-          />
-          <fieldset className="diffField gameFormRow">
-            <legend>Difficulty:</legend>
-            <div className="marker allRadio toggleSet">
-              <input
-                type="radio"
-                name="gameWeight"
-                id="gameWeight1"
-                value=""
-                onChange={handleQGameWeight}
-                defaultChecked={qGameWeight === ""}
-              />
-              <label htmlFor="gameWeight1">All</label>
-            </div>
-
-            <div className="marker easy toggleSet">
-              <input
-                type="radio"
-                name="gameWeight"
-                id="gameWeight1"
-                value="Easy"
-                onChange={handleQGameWeight}
-                defaultChecked={qGameWeight === "Easy"}
-              />
-              <label htmlFor="gameWeight1">Easy</label>
-            </div>
-            <div className="marker medium toggleSet">
-              <input
-                type="radio"
-                name="gameWeight"
-                id="gameWeight2"
-                value="Medium"
-                onChange={handleQGameWeight}
-                defaultChecked={qGameWeight === "Medium"}
-              />
-              <label htmlFor="gameWeight2">Medium</label>
-            </div>
-            <div className="marker complex toggleSet">
-              <input
-                type="radio"
-                name="gameWeight"
-                id="gameWeight3"
-                value="Complex"
-                onChange={handleQGameWeight}
-                defaultChecked={qGameWeight === "Complex"}
-              />
-              <label htmlFor="gameWeight3">Complex</label>
-            </div>
-          </fieldset>
+              <div className="marker easy toggleSet">
+                <input
+                  type="radio"
+                  name="gameWeight"
+                  id="gameWeight1"
+                  value="Easy"
+                  onChange={handleQGameWeight}
+                  defaultChecked={qGameWeight === "Easy"}
+                />
+                <label htmlFor="gameWeight1">Easy</label>
+              </div>
+              <div className="marker medium toggleSet">
+                <input
+                  type="radio"
+                  name="gameWeight"
+                  id="gameWeight2"
+                  value="Medium"
+                  onChange={handleQGameWeight}
+                  defaultChecked={qGameWeight === "Medium"}
+                />
+                <label htmlFor="gameWeight2">Med</label>
+              </div>
+              <div className="marker complex toggleSet">
+                <input
+                  type="radio"
+                  name="gameWeight"
+                  id="gameWeight3"
+                  value="Complex"
+                  onChange={handleQGameWeight}
+                  defaultChecked={qGameWeight === "Complex"}
+                />
+                <label htmlFor="gameWeight3">Comp</label>
+              </div>
+            </fieldset>
+          </div>
           <button>Search</button>
         </div>
       </form>

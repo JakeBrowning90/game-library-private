@@ -221,6 +221,14 @@ fieldset {
   display: flex;
 }
 
+/* .advSearch {
+  background-color: rgb(99, 0, 102);
+} */
+
+.hidden {
+  display: none;
+}
+
 ul {
   list-style-type: none;
 }
