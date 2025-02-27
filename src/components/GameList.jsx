@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router";
 import { apiurl } from "../apiSource";
-import downArrow from "../assets/arrowdown.svg";
+import arrowDown from "../assets/arrowdown.svg";
+import arrowUp from "../assets/arrowup.svg";
 
 function GameList(
   {
@@ -50,7 +51,12 @@ function GameList(
   const toggleAdvForm = () => {
     const advSearch = document.querySelector(".advSearch");
     advSearch.classList.toggle("hidden");
-    // TODO: toggle icon
+    const icon = document.getElementById("expandIcon");
+    if (icon.src == arrowDown) {
+      icon.src = arrowUp;
+    } else if (icon.src == arrowUp) {
+      icon.src = arrowDown;
+    }
   };
 
   async function submitQuery(e) {
@@ -88,8 +94,16 @@ function GameList(
       </Link>
       <form onSubmit={submitQuery} className="blueBlock">
         <div className="formHeader">
-          <p>Search Games</p>
-          <img src={downArrow} alt="" onClick={toggleAdvForm} />
+          <h2>Search</h2>
+          <div className="moreLabel">
+            <p>Advanced</p>
+            <img
+              src={arrowDown}
+              alt=""
+              id="expandIcon"
+              onClick={toggleAdvForm}
+            />
+          </div>
         </div>
         <div className="formBody">
           <label htmlFor="qTitle">Title:</label>
@@ -106,7 +120,6 @@ function GameList(
         <label htmlFor="">Max. Player Count:</label>
         <label htmlFor="">Complexity:</label> */}
           <div className="formBody advSearch hidden">
-            <p>Advanced Search</p>
             <label htmlFor="qPlayerCt">Player count:</label>
             <input
               type="number"

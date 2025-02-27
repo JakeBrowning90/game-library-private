@@ -134,6 +134,12 @@ form,
   justify-content: space-between;
 }
 
+.moreLabel {
+  display: flex;
+  flex-direction: row;
+  margin: auto 0;
+}
+
 .gameForm {
   display: grid;
   grid-template-columns: minmax(0, 50%) 50%;
@@ -221,9 +227,11 @@ fieldset {
   display: flex;
 }
 
-/* .advSearch {
-  background-color: rgb(99, 0, 102);
-} */
+.advSearch {
+  margin-top: 10px;
+  /* padding-top: 5px; */
+  border-top: 2px solid var(--off-white);
+}
 
 .hidden {
   display: none;
