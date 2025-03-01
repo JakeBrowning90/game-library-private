@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router";
-import { apiurl } from "../apiSource";
+import { apiSource } from "../apiSource";
 import arrowDown from "../assets/arrowdown.svg";
 import arrowUp from "../assets/arrowup.svg";
 
@@ -19,7 +19,7 @@ function GameList(
 
   // Functions
   useEffect(() => {
-    fetch(apiurl + "game", {
+    fetch(apiSource + "game", {
       mode: "cors",
       headers: {
         "Content-Type": "application/json",
@@ -62,7 +62,7 @@ function GameList(
   async function submitQuery(e) {
     e.preventDefault();
     await fetch(
-      apiurl + `game/?title=${qTitle}&weight=${qGameWeight}&count=${qCount}`,
+      apiSource + `game/?title=${qTitle}&weight=${qGameWeight}&count=${qCount}`,
       {
         mode: "cors",
         headers: {

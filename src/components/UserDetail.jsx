@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams, useNavigate } from "react-router";
-import { apiurl } from "../apiSource";
+import { apiSource } from "../apiSource";
 
 function UserDetail(
   {
@@ -19,7 +19,7 @@ function UserDetail(
   const { userId } = useParams();
 
   useEffect(() => {
-    fetch(apiurl + "user/" + userId, {
+    fetch(apiSource + "user/" + userId, {
       mode: "cors",
       headers: {
         "Content-Type": "application/json",
@@ -50,7 +50,7 @@ function UserDetail(
 
   async function editUser(e) {
     e.preventDefault();
-    const response = await fetch(apiurl + "user/" + userId, {
+    const response = await fetch(apiSource + "user/" + userId, {
       method: "PUT",
       mode: "cors",
       headers: {
@@ -72,7 +72,7 @@ function UserDetail(
 
   async function deleteUser(e) {
     e.preventDefault();
-    await fetch(apiurl + "user/" + userId, {
+    await fetch(apiSource + "user/" + userId, {
       method: "DELETE",
       mode: "cors",
       headers: {

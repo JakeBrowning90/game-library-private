@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams, useNavigate } from "react-router";
 import GameForm from "./GameForm";
-import { apiurl } from "../apiSource";
+import { apiSource } from "../apiSource";
 
 function GameEdit(
   {
@@ -65,7 +65,7 @@ function GameEdit(
   };
 
   useEffect(() => {
-    fetch(apiurl + "game/" + gameId, {
+    fetch(apiSource + "game/" + gameId, {
       mode: "cors",
       headers: {
         "Content-Type": "application/json",
@@ -95,7 +95,7 @@ function GameEdit(
 
   async function submitGameEdit(e) {
     e.preventDefault();
-    const response = await fetch(apiurl + "game/" + gameId, {
+    const response = await fetch(apiSource + "game/" + gameId, {
       method: "PUT",
       mode: "cors",
       headers: {
@@ -125,7 +125,7 @@ function GameEdit(
 
   async function deleteGame(e) {
     e.preventDefault();
-    await fetch(apiurl + "game/" + gameId, {
+    await fetch(apiSource + "game/" + gameId, {
       method: "DELETE",
       mode: "cors",
       headers: {

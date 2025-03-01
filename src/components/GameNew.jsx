@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router";
-import { apiurl } from "../apiSource";
+import { apiSource } from "../apiSource";
 import GameForm from "./GameForm";
 
 function GameNew(
@@ -63,7 +63,7 @@ function GameNew(
 
   async function submitNewGame(e) {
     e.preventDefault();
-    const response = await fetch(apiurl + "game", {
+    const response = await fetch(apiSource + "game", {
       method: "POST",
       mode: "cors",
       headers: {

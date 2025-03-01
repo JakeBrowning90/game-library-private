@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
-import { apiurl } from "../apiSource";
+import { apiSource } from "../apiSource";
 
 function ProtectedRoute({
   // Props
@@ -14,7 +14,7 @@ function ProtectedRoute({
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch(apiurl + "user/check/", {
+    fetch(apiSource + "user/check/", {
       method: "POST",
       mode: "cors",
       headers: {

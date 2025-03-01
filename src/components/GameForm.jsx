@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { apiurl } from "../apiSource";
+import { apiSource } from "../apiSource";
 
 function GameForm({
   // Props
@@ -35,7 +35,7 @@ function GameForm({
   // Functions
 
   useEffect(() => {
-    fetch(apiurl + "tag", {
+    fetch(apiSource + "tag", {
       mode: "cors",
       headers: {
         "Content-Type": "application/json",

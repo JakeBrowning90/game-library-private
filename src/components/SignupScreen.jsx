@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router";
-import { apiurl } from "../apiSource";
+import { apiSource } from "../apiSource";
 
 function SignupScreen(
   {
@@ -28,7 +28,7 @@ function SignupScreen(
 
   async function submitSignup(e) {
     e.preventDefault();
-    const response = await fetch(apiurl + "user", {
+    const response = await fetch(apiSource + "user", {
       method: "POST",
       mode: "cors",
       headers: {

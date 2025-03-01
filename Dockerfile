@@ -11,7 +11,7 @@ WORKDIR /app
 
 # Set production environment
 ENV NODE_ENV="production"
-
+ARG VITE_API_SOURCE="https://game-library-api.fly.dev/"
 
 # Throw-away build stage to reduce size of final image
 FROM base AS build

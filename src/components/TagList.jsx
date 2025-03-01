@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, Outlet } from "react-router";
-import { apiurl } from "../apiSource";
+import { apiSource } from "../apiSource";
 
 function TagList(
   {
@@ -17,7 +17,7 @@ function TagList(
 
   // Functions
   useEffect(() => {
-    fetch(apiurl + "tag", {
+    fetch(apiSource + "tag", {
       mode: "cors",
       headers: {
         "Content-Type": "application/json",
@@ -44,7 +44,7 @@ function TagList(
 
   async function submitQuery(e) {
     e.preventDefault();
-    await fetch(apiurl + `tag/?tagname=${query}`, {
+    await fetch(apiSource + `tag/?tagname=${query}`, {
       mode: "cors",
       headers: {
         "Content-Type": "application/json",
@@ -61,7 +61,7 @@ function TagList(
 
   async function submitNewTag(e) {
     e.preventDefault();
-    const response = await fetch(apiurl + "tag", {
+    const response = await fetch(apiSource + "tag", {
       method: "POST",
       mode: "cors",
       headers: {

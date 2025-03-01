@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { apiurl } from "../apiSource";
+import { apiSource } from "../apiSource";
 
 function LoginScreen(
   {
@@ -22,7 +22,7 @@ function LoginScreen(
 
   async function submitLogin(e) {
     e.preventDefault();
-    const response = await fetch(apiurl + "user/login", {
+    const response = await fetch(apiSource + "user/login", {
       method: "POST",
       mode: "cors",
       headers: {

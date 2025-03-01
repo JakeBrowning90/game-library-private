@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router";
-import { apiurl } from "../apiSource";
+import { apiSource } from "../apiSource";
 
 function UserList(
   {
@@ -15,7 +15,7 @@ function UserList(
 
   // Functions
   useEffect(() => {
-    fetch(apiurl + "user", {
+    fetch(apiSource + "user", {
       mode: "cors",
       headers: {
         "Content-Type": "application/json",
@@ -38,7 +38,7 @@ function UserList(
 
   async function submitQuery(e) {
     e.preventDefault();
-    await fetch(apiurl + `user/?username=${query}`, {
+    await fetch(apiSource + `user/?username=${query}`, {
       mode: "cors",
       headers: {
         "Content-Type": "application/json",

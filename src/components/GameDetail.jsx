@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router";
-import { apiurl } from "../apiSource";
+import { apiSource } from "../apiSource";
 
 function GameDetail(
   {
@@ -15,7 +15,7 @@ function GameDetail(
   const { gameId } = useParams();
 
   useEffect(() => {
-    fetch(apiurl + "game/" + gameId, {
+    fetch(apiSource + "game/" + gameId, {
       mode: "cors",
       headers: {
         "Content-Type": "application/json",

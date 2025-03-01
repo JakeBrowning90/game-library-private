@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams, useNavigate } from "react-router";
-import { apiurl } from "../apiSource";
+import { apiSource } from "../apiSource";
 
 function TagEditScreen(
   {
@@ -18,7 +18,7 @@ function TagEditScreen(
   const { tagId } = useParams();
 
   useEffect(() => {
-    fetch(apiurl + "tag/" + tagId, {
+    fetch(apiSource + "tag/" + tagId, {
       mode: "cors",
       headers: {
         "Content-Type": "application/json",
@@ -41,7 +41,7 @@ function TagEditScreen(
 
   async function editTag(e) {
     e.preventDefault();
-    const response = await fetch(apiurl + "tag/" + tagId, {
+    const response = await fetch(apiSource + "tag/" + tagId, {
       method: "PUT",
       mode: "cors",
       headers: {
@@ -62,7 +62,7 @@ function TagEditScreen(
 
   async function deleteTag(e) {
     e.preventDefault();
-    const response = await fetch(apiurl + "tag/" + tagId, {
+    const response = await fetch(apiSource + "tag/" + tagId, {
       method: "DELETE",
       mode: "cors",
       headers: {
