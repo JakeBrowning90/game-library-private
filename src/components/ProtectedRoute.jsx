@@ -27,15 +27,16 @@ function ProtectedRoute({
         if (response.status == 401) {
           localStorage.clear();
           navigate("/login");
-        } else {
-          return response.json();
         }
+        return response.json();
       })
-      .then(setVerifying(false));
+      .catch((error) => setError(error))
+      .finally(setVerifying(false));
   }, [children]);
 
   // Render
-  if (verifying) return <p>Verifying...</p>;
+  if (verifying) return <p className="verifyDiv">Verifying...</p>;
+  if (error) return <p>Network error, please try again later.</p>;
 
   return children;
 }
