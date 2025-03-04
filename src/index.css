@@ -190,9 +190,21 @@ form,
   gap: 5px;
 }
 
-.allRadio {
+.cardTagList {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.cardTagList > * {
+  margin: 1px 1px 0 0;
+}
+
+.allMarker {
   background-color: var(--off-white);
   color: black;
+  width: auto;
 }
 
 .easy {

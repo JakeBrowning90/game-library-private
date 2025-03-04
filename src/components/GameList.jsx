@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router";
 import { apiSource } from "../apiSource";
+import { parameterizeArray } from "../parameterizeTags";
 import arrowDown from "../assets/arrowdown.svg";
 import arrowUp from "../assets/arrowup.svg";
 
@@ -13,6 +14,8 @@ function GameList(
   const [qTitle, setQTitle] = useState("");
   const [qGameWeight, setQGameWeight] = useState("");
   const [qCount, setQCount] = useState("");
+  const [tagList, setTagList] = useState([]);
+  const [checkedTags, setCheckedTags] = useState([]);
   const [gameList, setGameList] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -36,6 +39,24 @@ function GameList(
       .finally(() => setLoading(false));
   }, []);
 
+  useEffect(() => {
+    fetch(apiSource + "tag", {
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => {
+        if (response.status >= 400) {
+          throw new Error("Tag list fetch error");
+        }
+        return response.json();
+      })
+      .then((response) => setTagList(response))
+      .catch((error) => setError(error))
+      .finally(() => setLoading(false));
+  }, []);
+
   const handleQTitle = (e) => {
     setQTitle(e.target.value);
   };
@@ -46,6 +67,16 @@ function GameList(
 
   const handleQCount = (e) => {
     setQCount(e.target.value);
+  };
+
+  const handleTags = (e) => {
+    if (e.target.checked) {
+      setCheckedTags(checkedTags.concat(parseInt(e.target.value)));
+    } else {
+      setCheckedTags(
+        checkedTags.filter((tag) => tag !== parseInt(e.target.value))
+      );
+    }
   };
 
   const toggleAdvForm = () => {
@@ -60,9 +91,11 @@ function GameList(
   };
 
   async function submitQuery(e) {
+    const qTags = parameterizeArray("tags", checkedTags);
     e.preventDefault();
     await fetch(
-      apiSource + `game/?title=${qTitle}&weight=${qGameWeight}&count=${qCount}`,
+      apiSource +
+        `game/?title=${qTitle}&weight=${qGameWeight}&count=${qCount}${qTags}`,
       {
         mode: "cors",
         headers: {
@@ -114,11 +147,6 @@ function GameList(
             value={qTitle}
             onChange={handleQTitle}
           />
-          {/* TODO: Add addtl search params */}
-          {/* <label htmlFor="">Age Recommendation:</label>
-        <label htmlFor="">Min. Player Count:</label>
-        <label htmlFor="">Max. Player Count:</label>
-        <label htmlFor="">Complexity:</label> */}
           <div className="formBody advSearch hidden">
             <label htmlFor="qPlayerCt">Player count:</label>
             <input
@@ -130,7 +158,7 @@ function GameList(
             />
             <fieldset className="diffField searchDiff">
               <legend>Difficulty:</legend>
-              <div className="marker allRadio toggleSet">
+              <div className="marker allMarker toggleSet">
                 <input
                   type="radio"
                   name="gameWeight"
@@ -175,6 +203,24 @@ function GameList(
                 />
                 <label htmlFor="gameWeight3">Comp</label>
               </div>
+            </fieldset>
+            <fieldset htmlFor="" className="gameFormRow cardTagList">
+              <legend>Tags:</legend>
+              {tagList.map((tag) => {
+                return (
+                  <div key={tag.id} className="toggleSet marker allMarker">
+                    <input
+                      type="checkbox"
+                      name={"checkbox" + tag.id}
+                      id={"checkbox" + tag.id}
+                      value={tag.id}
+                      defaultChecked={checkedTags.some((e) => e === tag.id)}
+                      onChange={handleTags}
+                    />
+                    <label htmlFor={"checkbox" + tag.id}>{tag.tagName}</label>
+                  </div>
+                );
+              })}
             </fieldset>
           </div>
           <button>Search</button>

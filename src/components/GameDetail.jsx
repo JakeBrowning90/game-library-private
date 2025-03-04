@@ -78,11 +78,11 @@ function GameDetail(
         {targetGame.tags.length == 0 ? (
           <p className="gameCardRow">No tags applied</p>
         ) : (
-          <ul className="gameCardRow">
+          <ul className="gameCardRow cardTagList">
             <p>Tags:</p>
             {targetGame.tags.map((tag) => {
               return (
-                <li key={tag.id}>
+                <li key={tag.id} className="marker allMarker">
                   <p>{tag.tagName}</p>
                 </li>
               );

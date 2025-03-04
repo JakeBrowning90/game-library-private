@@ -13,9 +13,7 @@ React, React Router (TBA)
 -Collapsable forms
 -Lock top of game list screen
 -Paginate search results
--Additional search filters for game search
 -Form input limits and backend validation
--Change API source to .env value
 
 Feedback:
 -single-player tag
