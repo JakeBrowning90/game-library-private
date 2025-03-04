@@ -1,19 +1,28 @@
 # Game Library - Private Frontend
 
 ## Overview
+This repo is the private frontend for a library management concept app for use by a board game cafe. It enables CRUD actions for games in the collection, tags used for filtering game searches, and users with varying levels of access.   
+
 Public Frontend Repo: https://github.com/JakeBrowning90/game-library-public
 API Repo: https://github.com/JakeBrowning90/game-library-api
 
+All routes are protected by jwt authentication, and newly-created users must be granted "confirmed" status by an Admin before being able to login. Additionally, while all confirmed users can perform CRUD operations on games and tags, only Admins can view or work with data on other users. 
+
 ## Technologies
-React, React Router (TBA)
+React, React Router,  CSS, JavaScript, jsonwebtoken in localStorage
 
 ## Challenges/To-dos
 -Update DB with CSV upload including array of tag selections
--Placeholder form fields
+
+-Form input limits and backend validation: the build currently has limited form attributes and should include some placeholders and hard character limits, as well as improved validation on the back end.
+
 -Collapsable forms
--Lock top of game list screen
--Paginate search results
--Form input limits and backend validation
+
+-Lock forms to top of list screens 
+
+-Paginate search results: The current build returns all search results as a single page. I'd like to modify this to return only 10 or so at time, and let the user advance through the results one page at a time.
+
+-Set demo permissions
 
 Feedback:
 -single-player tag
@@ -24,4 +33,4 @@ Feedback:
 TBA
 
 ## Credits
-TBA
+TBA - Thanks to friends for feedback on design and potential future features.
