@@ -56,6 +56,7 @@ function UserDetail(
       headers: {
         "Content-Type": "application/json",
         authorization: localStorage.getItem("token"),
+        demo: localStorage.getItem("isDemo"),
       },
       body: JSON.stringify({
         isAdmin: isAdmin,
@@ -78,6 +79,7 @@ function UserDetail(
       headers: {
         "Content-Type": "application/json",
         authorization: localStorage.getItem("token"),
+        demo: localStorage.getItem("isDemo"),
       },
     });
     navigate("/users");

@@ -48,6 +48,7 @@ function TagList(
       mode: "cors",
       headers: {
         "Content-Type": "application/json",
+        demo: localStorage.getItem("isDemo"),
       },
     })
       .then((response) => {
@@ -67,6 +68,7 @@ function TagList(
       headers: {
         "Content-Type": "application/json",
         authorization: localStorage.getItem("token"),
+        demo: localStorage.getItem("isDemo"),
       },
       body: JSON.stringify({
         tagName: newTag,

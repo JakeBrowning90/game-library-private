@@ -69,6 +69,7 @@ function GameNew(
       headers: {
         "Content-Type": "application/json",
         authorization: localStorage.getItem("token"),
+        demo: localStorage.getItem("isDemo"),
       },
       body: JSON.stringify({
         title: title,

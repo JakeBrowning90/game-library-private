@@ -84,7 +84,7 @@ function UserList(
                 <p>
                   {user.username} - {user.isAdmin ? "Admin" : "Basic"}
                   {!user.isConfirmed && " - Pending Access"}
-                  {user.isDemo && "Demo"}
+                  {user.isDemo && " - Demo"}
                 </p>
                 <Link to={`/users/${user.id}`}>Edit</Link>
               </li>

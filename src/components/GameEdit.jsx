@@ -101,6 +101,7 @@ function GameEdit(
       headers: {
         "Content-Type": "application/json",
         authorization: localStorage.getItem("token"),
+        demo: localStorage.getItem("isDemo"),
       },
       body: JSON.stringify({
         title: title,
@@ -131,6 +132,7 @@ function GameEdit(
       headers: {
         "Content-Type": "application/json",
         authorization: localStorage.getItem("token"),
+        demo: localStorage.getItem("isDemo"),
       },
     });
     navigate("/games");
