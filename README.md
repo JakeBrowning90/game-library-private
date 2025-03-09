@@ -30,7 +30,9 @@ Feedback:
 -recommend similar games on detail view?
 
 ## How to use
-TBA
+Visitors: log into the demo account (read-only access) with the following credentials.
+### Username - DemoUser
+### Password - DemoPassword 
 
 ## Credits
-TBA - Thanks to friends for feedback on design and potential future features.
+Thanks to friends for feedback on design and potential future features.

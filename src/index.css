@@ -128,7 +128,7 @@ form,
   flex-direction: column;
 }
 
-.formHeader {
+.formHeader, .formFooter {
   display: flex;
   flex-direction: row;
   justify-content: space-between;

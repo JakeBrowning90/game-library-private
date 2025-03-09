@@ -12,6 +12,7 @@ import GameEdit from "./components/GameEdit";
 import GameNew from "./components/GameNew";
 import GameDetail from "./components/GameDetail";
 import ErrorScreen from "./components/ErrorScreen";
+import About from "./components/About"
 
 import { Routes, Route, Link, useNavigate } from "react-router";
 
@@ -123,6 +124,8 @@ function App() {
           ></Route>
           <Route path="login" element={<LoginScreen />} />
           <Route path="signup" element={<SignupScreen />} />
+          <Route path="about" element={<About />} />
+
           <Route path="*" element={<ErrorScreen />} />
         </Routes>
       </main>
