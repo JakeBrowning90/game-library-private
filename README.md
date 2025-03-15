@@ -22,19 +22,16 @@ React, React Router,  CSS, JavaScript, jsonwebtoken in localStorage
 
 -Paginate search results: The current build returns all search results as a single page. I'd like to modify this to return only 10 or so at time, and let the user advance through the results one page at a time.
 
--Set demo permissions
-
 Feedback:
 -single-player tag
 -scrape rating off BGG?
 -recommend similar games on detail view?
 -Personalize greeting and Game List Header 
--Move difficulty filter out of advanced 
 -Change filter form to left sidebar on desktop? 
 -Display boxart 
 -Detail view: link to buy, rules, forums? 
 -Popularity/trending view? 
--Increase title and player count heights
+-Increase player count height
 
 ## How to use
 Visitors: log into the demo account (read-only access) with the following credentials.

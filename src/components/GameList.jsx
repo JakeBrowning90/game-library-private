@@ -147,6 +147,53 @@ function GameList(
             value={qTitle}
             onChange={handleQTitle}
           />
+          <fieldset className="diffField searchDiff">
+            <legend>Difficulty:</legend>
+            <div className="marker allMarker toggleSet">
+              <input
+                type="radio"
+                name="gameWeight"
+                id="gameWeight1"
+                value=""
+                onChange={handleQGameWeight}
+                defaultChecked={qGameWeight === ""}
+              />
+              <label htmlFor="gameWeight1">All</label>
+            </div>
+            <div className="marker easy toggleSet">
+              <input
+                type="radio"
+                name="gameWeight"
+                id="gameWeight1"
+                value="Easy"
+                onChange={handleQGameWeight}
+                defaultChecked={qGameWeight === "Easy"}
+              />
+              <label htmlFor="gameWeight1">Easy</label>
+            </div>
+            <div className="marker medium toggleSet">
+              <input
+                type="radio"
+                name="gameWeight"
+                id="gameWeight2"
+                value="Medium"
+                onChange={handleQGameWeight}
+                defaultChecked={qGameWeight === "Medium"}
+              />
+              <label htmlFor="gameWeight2">Med</label>
+            </div>
+            <div className="marker complex toggleSet">
+              <input
+                type="radio"
+                name="gameWeight"
+                id="gameWeight3"
+                value="Complex"
+                onChange={handleQGameWeight}
+                defaultChecked={qGameWeight === "Complex"}
+              />
+              <label htmlFor="gameWeight3">Comp</label>
+            </div>
+          </fieldset>
           <div className="formBody advSearch hidden">
             <label htmlFor="qPlayerCt">Player count:</label>
             <input
@@ -156,54 +203,7 @@ function GameList(
               value={qCount}
               onChange={handleQCount}
             />
-            <fieldset className="diffField searchDiff">
-              <legend>Difficulty:</legend>
-              <div className="marker allMarker toggleSet">
-                <input
-                  type="radio"
-                  name="gameWeight"
-                  id="gameWeight1"
-                  value=""
-                  onChange={handleQGameWeight}
-                  defaultChecked={qGameWeight === ""}
-                />
-                <label htmlFor="gameWeight1">All</label>
-              </div>
 
-              <div className="marker easy toggleSet">
-                <input
-                  type="radio"
-                  name="gameWeight"
-                  id="gameWeight1"
-                  value="Easy"
-                  onChange={handleQGameWeight}
-                  defaultChecked={qGameWeight === "Easy"}
-                />
-                <label htmlFor="gameWeight1">Easy</label>
-              </div>
-              <div className="marker medium toggleSet">
-                <input
-                  type="radio"
-                  name="gameWeight"
-                  id="gameWeight2"
-                  value="Medium"
-                  onChange={handleQGameWeight}
-                  defaultChecked={qGameWeight === "Medium"}
-                />
-                <label htmlFor="gameWeight2">Med</label>
-              </div>
-              <div className="marker complex toggleSet">
-                <input
-                  type="radio"
-                  name="gameWeight"
-                  id="gameWeight3"
-                  value="Complex"
-                  onChange={handleQGameWeight}
-                  defaultChecked={qGameWeight === "Complex"}
-                />
-                <label htmlFor="gameWeight3">Comp</label>
-              </div>
-            </fieldset>
             <fieldset htmlFor="" className="gameFormRow cardTagList">
               <legend>Tags:</legend>
               {tagList.map((tag) => {
