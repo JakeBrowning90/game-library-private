@@ -16,7 +16,7 @@ React, React Router,  CSS, JavaScript, jsonwebtoken in localStorage
 
 -Form input limits and backend validation: the build currently has limited form attributes and should include some placeholders and hard character limits, as well as improved validation on the back end.
 
--Collapsable forms
+-Collapsable forms on game create/edit/delete?
 
 -Lock forms to top of list screens 
 
@@ -28,6 +28,13 @@ Feedback:
 -single-player tag
 -scrape rating off BGG?
 -recommend similar games on detail view?
+-Personalize greeting and Game List Header 
+-Move difficulty filter out of advanced 
+-Change filter form to left sidebar on desktop? 
+-Display boxart 
+-Detail view: link to buy, rules, forums? 
+-Popularity/trending view? 
+-Increase title and player count heights
 
 ## How to use
 Visitors: log into the demo account (read-only access) with the following credentials.

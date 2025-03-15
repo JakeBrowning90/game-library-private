@@ -43,6 +43,9 @@ function App() {
       </header>
       <main>
         <Routes>
+          <Route path="login" element={<LoginScreen />} />
+          <Route path="signup" element={<SignupScreen />} />
+          <Route path="about" element={<About />} />
           <Route
             path="/"
             element={
@@ -122,10 +125,7 @@ function App() {
               </ProtectedRoute>
             }
           ></Route>
-          <Route path="login" element={<LoginScreen />} />
-          <Route path="signup" element={<SignupScreen />} />
-          <Route path="about" element={<About />} />
-
+         
           <Route path="*" element={<ErrorScreen />} />
         </Routes>
       </main>
