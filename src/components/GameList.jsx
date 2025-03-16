@@ -144,6 +144,7 @@ function GameList(
             type="text"
             name="qTitle"
             id="qTitle"
+            maxLength="20"
             value={qTitle}
             onChange={handleQTitle}
           />

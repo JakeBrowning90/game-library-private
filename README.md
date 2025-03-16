@@ -12,31 +12,29 @@ All routes are protected by jwt authentication, and newly-created users must be 
 React, React Router,  CSS, JavaScript, jsonwebtoken in localStorage
 
 ## Challenges/To-dos
--Update DB with CSV upload including array of tag selections
+- Update DB with CSV upload including array of tag selections
 
--Form input limits and backend validation: the build currently has limited form attributes and should include some placeholders and hard character limits, as well as improved validation on the back end.
+- Form input limits and backend validation: the build currently has limited form attributes, and validating queries on the back end may be a good practice.
 
--Collapsable forms on game create/edit/delete?
+- Collapsable forms on game create/edit/delete?
 
--Lock forms to top of list screens 
+- Lock search form to the top of the screen: This should be easily doable, but I'd like additional feedback from users before settling on this design.
 
--Paginate search results: The current build returns all search results as a single page. I'd like to modify this to return only 10 or so at time, and let the user advance through the results one page at a time.
+- Paginate search results: The current build returns all search results as a single page. I'd like to modify this to return only 10 or so at time, and let the user advance through the results one page at a time.
 
-Feedback:
--single-player tag
--scrape rating off BGG?
--recommend similar games on detail view?
--Personalize greeting and Game List Header 
--Change filter form to left sidebar on desktop? 
--Display boxart 
--Detail view: link to buy, rules, forums? 
--Popularity/trending view? 
--Increase player count height
+- Change filter form to left sidebar on desktop: the current build is designed as a mobile-first application, but a desktop-friendly layout might have the form off to the side.
+
+- Link to online info: One idea I've heard most frequently in feedback is to give each Game detail additional info like it's boxart and and info from a site like BoardGameGeek for review scores, rules, discussion, and online shopping. I like this idea, but am concerned that store staff would be put off of manually adding those links to a new entry, and I haven't found an API that could more easily fetch that info.
+
+- Popularity/trending view: If I add user ratings and/or the date a game is added to the collection to the Game schema, then it would make sense to add filters like "popular" or "new arrivals" to the search form.
 
 ## How to use
-Visitors: log into the demo account (read-only access) with the following credentials.
+Visitors: log into the demo account (read-only access) with the following credentials. 
+
 ### Username - DemoUser
 ### Password - DemoPassword 
 
+You will be able to view the Tag and Game lists, as well as the associated forms, but cannot create, edit, or delete any records. You will also not have access to the User list.
+
 ## Credits
-Thanks to friends for feedback on design and potential future features.
+Thanks to friends both in my web dev community as well as in my board game group for feedback on design and potential future features. Sample game info is from boardgamegeek.com, or is otherwise made up by myself as example data.
